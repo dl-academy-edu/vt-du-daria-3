@@ -8,6 +8,7 @@
 .header {
   $fs-primary: 18px;
   $lh-primary: 22px;
+  font-weight: bold;
 
   @media (max-width: 1265px) {
     padding: 25px 8% 31px;
@@ -22,7 +23,7 @@
   &__content {
     justify-content: space-between;
     @extend %flex-and-center;
-    padding-top: 19px;
+    padding-top: 22px;
     padding-bottom: 5px;
 
     @media (max-width: 768px) {
@@ -32,7 +33,6 @@
   
   &__link {
     margin-left: 10px;
-    font-weight: bold;
     color: #070707;
 
     &:hover {
