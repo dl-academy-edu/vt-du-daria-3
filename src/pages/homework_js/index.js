@@ -23,7 +23,7 @@ function myFunkLes2(){
   useNum1 = +prompt("Введите любое число: ");
   
   while (i < useNum1) {
-    if ((i%4) != 0) {
+    if (i%4) {
       console.log (i);
     }
     i++;
@@ -88,7 +88,7 @@ function myFunkLes2_2(){
   funk();
 
   while (i < useNum4) {
-    if ((i%4) != 0) {
+    if (i%4) {
       console.log (i);
     }
     i++;
