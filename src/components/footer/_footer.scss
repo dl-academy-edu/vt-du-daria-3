@@ -1,0 +1,50 @@
+@import './consts';
+
+.footer {
+  height: 510px;//delete
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1440px;
+  
+
+  &__title {
+    text-align: center;
+    padding-top: 34px;
+    font-size: $fs-title;
+  }
+
+  &__content {
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 318px;
+  }
+
+  &__text {
+    margin: auto;
+    padding-bottom: 20px;
+    max-width: 266px;
+    text-align: center;
+  }
+}
+
+.social {
+
+  &__list {
+    min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+  }
+
+  &__item {
+    order: 0;
+    align-self: center;
+    padding: 10px 17px;
+    border: 2.5px solid #070707;
+    border-radius: 20px;
+  }
+}

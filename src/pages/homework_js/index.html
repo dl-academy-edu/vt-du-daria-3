@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/../common.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/static/fonts/gilroy.css" />
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <title>Homework course-3</title>
+  </head>
+
+  <body>
+    @@include('header/index.html')
+    <main class="main container-back">
+      <section class="slider container">
+        <h1>Homework course-3</h1>
+        <div class="lessons">            
+          <form class="form">
+            <p>1. Написать свой первый JS код, который будет открывать 
+              окна для ввода имени, фамилии и возраста (итого 3 
+              окна), после ввода этой информации необходимо 
+              создать объект пользователя и вывести его в консоль.</p>
+            <input id="btnLes1" class="btn" type="button" onclick="myFunkLes1()" value="Homework-1">
+
+            <p>2. Создать программу, которая запрашивает у 
+              пользователя число, в консоль выводит числа от 1 до 
+              до этого числа, но пропускает числа, которые кратны 
+              (делятся без остатка) 4-м.</p>
+            <input id="btnLes2" class="btn" type="button" onclick="myFunkLes2()" value="Homework-2">
+
+            <p>2.1 Для продвинутых:
+              - Добавить проверку на тип данных, то есть если 
+              передали строку, мы сообщаем об этом 
+              пользователю и после этого запускаем самих себя 
+              (рекууууурсия...).</p>
+            <input id="btnLes2_1" class="btn" type="button" onclick="myFunkLes2_1()" value="Homework-2_1">
+
+            <p>2.2 Добавить проверку на размер введенного числа, 
+              то есть если пользователь ввел например число 
+              более 40, то так же сообщать ему об этом и 
+              запустить самих себя (снова рекууууурсия...). </p>
+            <input id="btnLes2_2" class="btn" type="button" onclick="myFunkLes2_2()" value="Homework-2_2">
+    
+            <p>2.3 Создать программу, которая будет каждые 3 секунды 
+              увеличивать значение переменной на 3 и выводить 
+              итоговое значение в console, а после того, как пройдет 
+              9 секунд, останавливать программу.</p>
+            <input id="btnLes2_3" class="btn" type="button" onclick="myFunkLes2_3()" value="Homework-2_3">
+          </form> 
+        </div>
+      </section>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>

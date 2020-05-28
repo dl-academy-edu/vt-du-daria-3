@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="desciption" content="site about woman Antonina Antoninovna.">
+    <meta name="keywords" content="developer html...">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/static/fonts/gilroy.css" />
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="/../common.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>Antonina's blog</title>
+  </head>
+  <body>
+    @@include('header/index.html')
+    <main class="main container-back">
+      <section class="slider container">
+        <div class="slider__content"> 
+          <h1 class="title">Antonina Antoninovna</h1>
+          <p class="slider__text">Future front-end developer 23 years old, Tolyatti</p>  
+        </div>
+        <div class="slider__images">
+          <picture>
+            <source 
+              media="(max-width: 767px)"
+              srcset="/../../static/images/antonina-mobile_1x.jpg?1 1x, /../../static/images/antonina-mobile_2x.jpg?1 2x">
+            <source
+              media="(max-width: 1265px)" 
+              srcset="/../../static/images/antonina-tablet_1x.jpg?1 1x, /../../static/images/antonina-tablet_2x.jpg?1 2x" >
+            <img
+              srcset="/../../static/images/antonina_1x.jpg?2 1x, /../../static/images/antonina_2x.jpg?1 2x"
+              src="/../../static/images/antonina_1x.jpg?2"
+              class="slider__img" 
+              alt="image of Antonina">
+          </picture>
+
+          <div class="flipping-slider">
+            <div class="flipping-slider__nav">
+              <button class="button-prev" type="button" >
+                <span class="prev"></span>
+              </button>
+              <div class="pagination">
+                <span class="pagination__slide1"></span>
+                <span class="pagination__slide2"></span>
+                <span class="pagination__slide3"></span>
+                <span class="pagination__slide4"></span>
+              </div>
+              <button class="button-next" type="button">
+                <span class="next"></span>
+              </button>
+            </div>
+        </div>
+      </section>
+
+      <section class="about-me">
+        <h2 class="about-me__title">About me</h2>
+        <div class="about-me__content">
+          <ul class="row">
+            <li class="about-me__item">
+                <span class="about-me__text">
+                  Aliquam tortor molestie turpis est tristique. Congue diam orci amet quis semper ut. 
+                  Vitae aenean nibh facilisis urna, ultricies euismod nunc. 
+                  Commodo fringilla sit hendrerit consequat. Vel ac elit vel sagittis.
+                </span>
+                <span class="about-me__frame"></span>
+            </li>
+            <li class="about-me__item">
+                <span class="about-me__text">
+                  Tincidunt id quis pellentesque rutrum pretium. Egestas aliquam dictum ipsum nisl, sed pulvinar. 
+                  Commodo elit sed a fermentum non justo. Etiam platea consectetur.</span>
+                <span class="about-me__frame"></span>
+            </li>
+            <li class="about-me__item">
+                <span class="about-me__text">
+                  Quam ipsum odio tellus etiam aliquam dolor ut hendrerit. Felis risus nec vitae nunc ultricies placerat. 
+                  Nullam nec felis eu id dolor pellentesque tristique.</span>
+                <span class="about-me__frame"></span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="skills container">
+        <h2 class="skills__title">Skills</h2>
+        <p class="skills__text">I work in such programs as</p>
+        <ul class="program__list">
+          <li class="program__item">
+            <!-- <a class="program__list-item" href="#"> -->
+              <img class="program__img" src="/../../static/images/HTML_5.svg" alt="logo of HTML_5">
+              <p>HTML 5</p>
+            <!-- </a> -->
+          </li>
+          <li class="program__item">
+            <!-- <a class="program__list-item" href="#"> -->
+              <img class="program__img" src="/../../static/images/CSS_SCSS.svg" alt="logo of CSS SCSS" >
+            
+            <!-- </a> -->
+            <p>CSS/SCSS</span>
+          </li>
+          <li class="program__item">
+            <!-- <a class="program__list-item" href="#"> -->
+              <img class="program__img" src="/../../static/images/JavaScript.svg" alt="logo of JavaScript">
+            </a>
+            <p>JavaScript</p>
+          </li>
+          <li class="program__item">
+            <!-- <a class="program__list-item" href="#"> -->
+              <img class="program__img" src="/../../static/images/Git_GitHub.svg" alt="logo of Git GitHub">
+            <!-- </a> -->
+            <p>Git/GitHub</p>
+          </li>
+          <li class="program__item">
+            <!-- <a class="program__list-item" href="#"> -->
+              <img class="program__img" src="/../../static/images/Figma.svg" alt="logo of Figma">
+            <!-- </a> -->
+            <p>Figma</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="portfolio">
+        <h2 class="portfolio__title">Portfolio</h2>
+        <picture class="site">
+          <source 
+            media="(max-width: 560px)"
+            srcset="/../../static/images/site-mobile_1x.jpg?1 1x, /../../static/images/site-mobile_2x.jpg?1 2x">
+          <source
+            media="(max-width: 1060px)" 
+            srcset="/../../static/images/site-tablet_1x.jpg?1 1x, /../../static/images/site-tablet_2x.jpg?1 2x" >
+          <img
+            srcset="/../../static/images/site_1x.jpg?2 1x, /../../static/images/site_2x.jpg?1 2x"
+            src="/../../static/images/site_1x.jpg?2"
+            class="portfolio__img" 
+            alt="image site">
+        </picture>
+        
+        <div class="portfolio__content container">
+          <div class="portfolio__item">
+            <a class="portfolio__link" href="#">Learning site for DL Academy courses</a>
+            <p class="portfolio__text">A simple multi-page static site.
+            The design layout was in Figma. HTML and CSS were used. 
+            The site is responsive and cross-browser, but without adding interactivity via JavaScript.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('footer/index.html')
+    <script src="script.js"></script>
+  </body>
+</html>
