@@ -6,18 +6,16 @@
 }
 
 .header {
-  $fs-primary: 18px;
-  $lh-primary: 22px;
+  font-size: $fs-primary;
+  line-height: $lh-primary;
   font-weight: bold;
 
   @media (max-width: 1265px) {
-    padding: 25px 8% 31px;
+    padding: 0 8% 31px;
   }
 
   @media (max-width: 375px) {
     margin: 0;
-    padding-top: 25px;
-    padding-bottom: 26px;
   }
 
   &__content {
@@ -26,13 +24,12 @@
     padding-top: 22px;
     padding-bottom: 5px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 650px) {
       display: none;
     }
   }
   
   &__link {
-    margin-left: 10px;
     color: #070707;
 
     &:hover {
@@ -65,10 +62,19 @@
     background-color: #666666;
     border: none;
 
-    @media (max-width: 768px) {
+    @media (max-width: 650px) {
       display: none;
     }
   }
+}
+
+.button-header {
+  padding: 0;
+  border: none;
+  font-weight: bold;
+  background-color: initial;
+  font-size: $fs-primary;
+  line-height: $lh-primary;
 }
 
 .mobile-header {
@@ -87,3 +93,111 @@
   display: none;
 }
 
+.modalSign-bg {
+  @extend .modal-bg;
+  z-index: 1;
+
+  &_close {
+    display: none;
+  } 
+}
+
+.modalSign-window {
+  @extend .modal-window;
+  max-width: 370px;
+  padding: 36px 36px;
+
+  &__input {
+    @extend .modal-window__input;
+  }
+
+  &__button {
+    @extend .modal-window__button;
+    width: 87px;
+    margin-top: 16px;
+    padding: 10px 0;
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 2.5px solid #070707;
+
+    &:hover, &:active {
+      background-color: #000000;
+      color: #FFFFFF;
+    }
+  }
+}
+
+.modalSign-window__close {
+  @extend .modal-window__close;
+}
+
+.modalReg-bg {
+  @extend .modal-bg;
+  z-index: 1;
+  
+  &_close {
+    display: none;
+  } 
+}
+
+.modalReg-window {
+  @extend .modal-window;
+
+  &__inform {
+    @extend .modal-window__inform;
+  }
+  
+  &__user {
+    @extend .modal-window__user;
+  }
+
+  &__input {
+    @extend .modal-window__input;
+  }
+
+  &__fieldset {
+    @extend .modal-window__fieldset;
+  }
+
+  &__lable {
+    @extend .modal-window__lable;
+  }
+
+  &__click {
+    @extend .modal-window__click;
+    &:hover, &:focus {
+      border: 2.5px solid #828282;
+    }
+  }
+
+  &__text {
+    @extend .modal-window__text;
+    &:hover, &:focus {
+      color: #828282;
+    }
+  }
+
+  &__button {
+    @extend .modalSign-window__button;
+    color: #E5E5E5;
+    background: #FFFFFF;
+    border: 2.5px solid #E5E5E5;
+    width: 101px;
+    padding: 7px 0;
+
+    &:hover, &:focus {
+      background-color: #FFFFFF;
+      color: #828282;
+      border: 2.5px solid #828282;
+    }
+
+    &:active {
+      color: #070707;
+      border: 2.5px solid #070707;
+    }
+  }
+}
+
+.modalReg-window__close {
+  @extend .modal-window__close;
+}

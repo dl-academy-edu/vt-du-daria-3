@@ -1,0 +1,303 @@
+@import "../../components/consts";
+
+
+%padding-margin {
+  padding: 0;
+  margin: 0;
+}
+
+%font-title {
+  font-weight: bold;
+}
+
+.main-title {
+  padding-top: 2.5%;
+}
+
+.selection {
+  &__form {
+    display: flex;
+    margin-top: 31px;
+  }
+  &__field {
+    margin-left: 15px;
+  }
+}
+
+.view {
+  @extend %padding-margin;
+  margin-left: 6%;
+
+  @media (max-width: 480px) {
+    margin-left: 0;
+    margin-top: -5px;
+  }
+
+  &__title {
+    @extend %font-title;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 15px 0 0;
+
+    @media (max-width: 480px) {
+      padding-top: 10px;
+    }
+  }
+
+  &__etem {
+    padding-bottom: 15px;
+
+    @media (max-width: 480px) {
+      padding-bottom: 10px;
+
+    }
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    margin-right: 33px;
+    cursor: pointer;
+    position: relative;
+
+    > input {
+      &:focus + .click {
+        border: 2px solid rgb(141, 113, 90);
+      }
+      
+      &:checked + .click {
+        background-color: #FFFFFF;
+      }
+      
+      &:checked + .click::before {
+        content: url("/../../static/images/Vector.svg");
+        position: absolute;
+        top: 3px;
+        transform: scale(.9);
+        height: 0px;
+        background-color: #FFFFFF;
+      }
+    }
+  }
+}
+
+// /* Стиль поля поиска */
+// form.example input[type=text] {
+// 	padding: 10px;
+// 	font-size: 17px;
+// 	border: 1px solid grey;
+// 	float: left;
+// 	width: 80%;
+// 	background: #f1f1f1;
+// }
+  
+// /* Стиль кнопки "Отправить" */
+// form.example button {
+// 	float: left;
+// 	width: 20%;
+// 	padding: 10px;
+// 	background: #2196F3;
+// 	color: white;
+// 	font-size: 17px;
+// 	border: 1px solid grey;
+// 	border-left: none; /* Предотвращение двойных границ */
+// 	cursor: pointer;
+// }
+
+// form.example button:hover {
+// 	background: #0b7dda;
+// }
+
+// /* Снимите поплавки */
+// form.example::after {
+// 	content: "";
+// 	clear: both;
+// 	display: table;
+// }
+
+
+.tag {
+	// @extend %padding-margin;
+	// margin-left: 6%;
+  
+	// @media (max-width: 480px) {
+	//   margin-left: 0;
+	//   margin-top: -5px;
+	// }
+  
+	// &__title {
+	//   // @extend %font-title;
+	// }
+  
+	&__list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 120px;
+	  margin: 0;
+	  padding: 15px 0 0;
+  
+	  @media (max-width: 480px) {
+		padding-top: 10px;
+	  }
+	}
+  
+	&__etem {
+	  padding-bottom: 5px;
+  
+	  @media (max-width: 480px) {
+		padding-bottom: 10px;
+	  }
+	}
+  
+	&__label {
+	  display: flex;
+	  align-items: center;
+	  margin-right: 5px;
+	  cursor: pointer;
+	  position: relative;
+  
+	  > input {
+		&:focus + .click {
+		  border: 2px solid rgb(141, 113, 90);
+		}
+		
+		&:checked + .click {
+		  background-color: #FFFFFF;
+		}
+		
+		&:checked + .click::before {
+		  content: url("/../../static/images/Vector.svg");
+		  position: absolute;
+		  top: 3px;
+		  transform: scale(.9);
+		  height: 0px;
+		  background-color: #FFFFFF;
+		}
+	  }
+  }
+}
+
+.click {
+  width: 25px;
+  height: 25px;
+  border: 2.5px solid #070707;
+  border-radius: 3px;
+
+  &_active {
+    content: url("/../../static/images/Vector.svg");
+    background-color: #FFFFFF;
+    top: 1px;
+  }
+}
+
+.text {
+  margin-left: 10px;
+}
+
+.clicker {
+  display: flex;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid #070707;
+  border-radius: 100%;
+  
+  &_active::before {
+    content:"";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background-color:  #070707;
+    border-radius: 100%;
+  }
+}
+
+.blog {
+  &__list {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  &__item {
+    border: 1px solid black;
+    display: flex;
+
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+// .picture {
+//   max-width: 30%;
+// }
+
+.blog__img {
+  max-width: initial;
+  height: auto;
+}
+
+/********************************************************/
+// .view {
+//   // @extend %padding-margin;
+//   margin-left: 9%;
+
+//   @media (max-width: 768px) {
+//     margin-left: 9%;
+//   }
+
+//   @media (max-width: 480px) {
+//     margin-left: 22%;
+//     margin-top: -5px;
+//   }
+
+//   &__title {
+//     @extend %font-title;
+//   }
+
+//   &__list {
+//     @extend .color__list;
+//   }
+
+//   &__etem {
+//     @extend .color__etem;
+//   }
+
+//   &__label {
+//     @extend .color__label;
+
+//     > input:focus + .clicker {
+//       border: 3px solid rgb(141, 113, 90)
+//     }
+  
+//     > input:checked + .clicker::before {
+//       @extend .clicker_active;
+//     } 
+//   }
+// }
+
+// .clicker {
+//   display: flex;
+//   position: relative;
+//   width: 20px;
+//   height: 20px;
+//   border: 3px solid #c29974;
+//   border-radius: 100%;
+  
+//   &_active::before {
+//     content:"";
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     width: 12px;
+//     height: 12px;
+//     background-color:  #C29974;
+//     border-radius: 100%;
+//   }
+// }

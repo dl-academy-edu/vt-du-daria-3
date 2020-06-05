@@ -3,13 +3,20 @@
   <div class="footer__content">
     <p class="footer__text">Want to know more or just chat? You are welcome!</p>
 
-    <!-- @@include('button/index.html',{
+    @@include('button/index.html',{
       "text": "Send message",
-      "class": "email-form__button-join",
       "type": "submit",
-      "value": "send"
-    }) -->
+      "value": "send", 
+      "class": "footer__link button footer__link_js"
+    })
 
+    <script>
+      var buttonOpen = document.querySelector(".footer__link_js");
+      buttonOpen.addEventListener("click", function(){
+        console.log ("Send message");
+      });
+
+    </script>
       <div class="social">
         <ul class="social__list">
           <li><a class="social__item" href="#">Instagram</a></li>
@@ -23,13 +30,59 @@
       </div>
 
     <div class="web-design">
-      <a class="web-design__link" href="#"> Design by DL Academy</a>
+      Design by <a class="web-design__link" href="#">DL Academy</a>
     </div>
 
     <div class="copyr">
       <p>Program code from Antonina</p>
     </div>
-
   </div>
-  
+
+  <!-- /***Send message modal*************************************************************************************************/ -->
+  <div class="modal-bg modal-bg_close modal-bg_js">
+    <form class="modal-window" action="https://form-data-dl.herokuapp.com/api/messages" method="POST">
+            
+      <div class="modal-window__user">
+        <div class="modal-window__inform">
+          <label class="modal-window__label" for="your-name">What is your name? *</label>
+          <input class="modal-window__input modal-window__input_js" id="your-name" type="text" name="text">
+        </div>
+
+        <div class="modal-window__inform">
+          <label class="modal-window__label" for="your-message">Message subject *</label>
+          <input class="modal-window__input" id="your-message" type="text" name="text">
+        </div>
+      </div>
+
+      <div class="modal-window__user">
+        <div class="modal-window__inform">
+          <label class="modal-window__label" for="your-email">Your Email *</label>
+          <input class="modal-window__input" id="your-email" type="email" name="email">
+        </div>
+
+        <div class="modal-window__inform">
+          <label class="modal-window__label" for="your-phone">Your mobile phone</label>
+          <input class="modal-window__input" id="your-phone" type="phone" name="phone">
+        </div>
+      </div>
+      
+      <label class="modal-window__label" for="your-message">What do you want to discuss whit me?</label>
+      <textarea class="modal-window__input" id="your-message" name="message"></textarea>
+
+      <fieldset class="modal-window__fieldset">
+        <label class="modal-window__lable">
+          <input class="modal-window__accept hidden" type="checkbox" name="accept" value="accept">
+          <span class="modal-window__click"></span>
+          <span class="modal-window__text">Checking on the button? you consent to the processing of your personal data.</span>
+        </label>
+      </fieldset>
+      @@include('button/index.html',{
+        "text": "SUBMIT",
+        "class": "modal-window__button",
+        "type": "submit",
+        "value": "submit"
+      })
+      <button class="modal-window__close modal-window__close_js" type="button" value="closed"></button>
+    </form>
+  </div> 
 </footer>

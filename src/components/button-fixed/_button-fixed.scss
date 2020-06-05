@@ -1,0 +1,44 @@
+@import './consts';
+
+.btn-fixed {
+  position: fixed;
+  top: 80%;
+  left: 80%;
+  width: 42px;
+  height: 42px;
+  box-sizing: border-box;
+  border: 2.5px solid #070707;
+  border-radius: 21px;
+  transform: rotate(-90deg);
+  background-color: #FAFAFA;
+  cursor: pointer;
+  transition: $transition-duration;
+
+  &:hover, &:focus {
+    border: 2.5px solid #828282;
+  }
+
+  &::after, &::before {
+    content: "";
+    position: absolute;
+    margin-top: -7%;
+    transform: rotate(45deg);
+    height: 17px;
+    width: 3px;
+    background-color: #070707;
+    border-radius: 5px;
+
+    &:hover, &:focus {
+      background-color:#828282;
+    }
+  }
+
+  &::before {
+    margin-top: -33.3%;
+    transform: rotate(-45deg);
+  }
+
+  &_hidden {
+    display: none;
+  }
+}

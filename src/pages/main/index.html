@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,12 +12,13 @@
     <link rel="stylesheet" href="/style.css">
     <title>Antonina's blog</title>
   </head>
+
   <body>
     @@include('header/index.html')
     <main class="main container-back">
       <section class="slider container">
         <div class="slider__content"> 
-          <h1 class="title">Antonina Antoninovna</h1>
+          <h1 class="main-title">Antonina Antoninovna</h1>
           <p class="slider__text">Future front-end developer 23 years old, Tolyatti</p>  
         </div>
         <div class="slider__images">
@@ -37,26 +38,22 @@
 
           <div class="flipping-slider">
             <div class="flipping-slider__nav">
-              <button class="button-prev" type="button" >
-                <span class="prev"></span>
-              </button>
-              <div class="pagination">
-                <span class="pagination__slide1"></span>
-                <span class="pagination__slide2"></span>
-                <span class="pagination__slide3"></span>
-                <span class="pagination__slide4"></span>
+              <button class="button-prev" type="button" ></button>
+              <div class="pagination" style="text-align:center">
+                <span class="pagination__slide pagination__slide_active" onclick=""></span>
+                <span class="pagination__slide" onclick=""></span>
+                <span class="pagination__slide" onclick=""></span>
+                <span class="pagination__slide" onclick=""></span>
               </div>
-              <button class="button-next" type="button">
-                <span class="next"></span>
-              </button>
+              <button class="button-next" type="button"></button>
             </div>
         </div>
       </section>
 
       <section class="about-me">
-        <h2 class="about-me__title">About me</h2>
+        <h2 class="title">About me</h2>
         <div class="about-me__content">
-          <ul class="row">
+          <ul class="about-me__list">
             <li class="about-me__item">
                 <span class="about-me__text">
                   Aliquam tortor molestie turpis est tristique. Congue diam orci amet quis semper ut. 
@@ -86,54 +83,53 @@
         <p class="skills__text">I work in such programs as</p>
         <ul class="program__list">
           <li class="program__item">
-            <!-- <a class="program__list-item" href="#"> -->
-              <img class="program__img" src="/../../static/images/HTML_5.svg" alt="logo of HTML_5">
-              <p>HTML 5</p>
-            <!-- </a> -->
+            <img class="program__img" src="/../../static/images/HTML_5.svg" alt="logo of HTML_5">
+            <p>HTML 5</p>
+            <span class="loader"></span>
           </li>
           <li class="program__item">
-            <!-- <a class="program__list-item" href="#"> -->
-              <img class="program__img" src="/../../static/images/CSS_SCSS.svg" alt="logo of CSS SCSS" >
-            
-            <!-- </a> -->
-            <p>CSS/SCSS</span>
+            <img class="program__img" src="/../../static/images/CSS_SCSS.svg" alt="logo of CSS SCSS" >
+            <p>CSS/SCSS</p>
+            <span class="loader"></span>  
           </li>
           <li class="program__item">
-            <!-- <a class="program__list-item" href="#"> -->
-              <img class="program__img" src="/../../static/images/JavaScript.svg" alt="logo of JavaScript">
-            </a>
+            <img class="program__img" src="/../../static/images/JavaScript.svg" alt="logo of JavaScript">
             <p>JavaScript</p>
+            <span class="loader"></span>
           </li>
           <li class="program__item">
-            <!-- <a class="program__list-item" href="#"> -->
-              <img class="program__img" src="/../../static/images/Git_GitHub.svg" alt="logo of Git GitHub">
-            <!-- </a> -->
+            <img class="program__img" src="/../../static/images/Git_GitHub.svg" alt="logo of Git GitHub">
             <p>Git/GitHub</p>
+            <span class="loader"></span>
           </li>
           <li class="program__item">
-            <!-- <a class="program__list-item" href="#"> -->
-              <img class="program__img" src="/../../static/images/Figma.svg" alt="logo of Figma">
-            <!-- </a> -->
+            <img class="program__img" src="/../../static/images/Figma.svg" alt="logo of Figma">
             <p>Figma</p>
+            <span class="loader"></span>
           </li>
         </ul>
       </section>
 
       <section class="portfolio">
         <h2 class="portfolio__title">Portfolio</h2>
-        <picture class="site">
-          <source 
-            media="(max-width: 560px)"
-            srcset="/../../static/images/site-mobile_1x.jpg?1 1x, /../../static/images/site-mobile_2x.jpg?1 2x">
-          <source
-            media="(max-width: 1060px)" 
-            srcset="/../../static/images/site-tablet_1x.jpg?1 1x, /../../static/images/site-tablet_2x.jpg?1 2x" >
-          <img
-            srcset="/../../static/images/site_1x.jpg?2 1x, /../../static/images/site_2x.jpg?1 2x"
-            src="/../../static/images/site_1x.jpg?2"
-            class="portfolio__img" 
-            alt="image site">
-        </picture>
+        <div class="slide-container container">
+          <picture class="site">
+            <source 
+              media="(max-width: 560px)"
+              srcset="/../../static/images/site-mobile_1x.jpg?1 1x, /../../static/images/site-mobile_2x.jpg?1 2x">
+            <source
+              media="(max-width: 1060px)" 
+              srcset="/../../static/images/site-tablet_1x.jpg?1 1x, /../../static/images/site-tablet_2x.jpg?1 2x" >
+            <img
+              srcset="/../../static/images/site_1x.jpg?2 1x, /../../static/images/site_2x.jpg?1 2x"
+              src="/../../static/images/site_1x.jpg?2"
+              class="portfolio__img" 
+              alt="image site">
+          </picture>
+
+          <button class="slide-prev" onclick="" type="button"></button>
+          <button class="slide-next" onclick="" type="button"></button>
+        </div>
         
         <div class="portfolio__content container">
           <div class="portfolio__item">
@@ -144,8 +140,10 @@
           </div>
         </div>
       </section>
+      @@include('button-fixed/index.html')
     </main>
     @@include('footer/index.html')
-    <script src="script.js"></script>
+    <script src="index.js"></script>
+    <script src="/../../static/images/setting.js"></script>
   </body>
 </html>

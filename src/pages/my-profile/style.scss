@@ -1,0 +1,232 @@
+@import "../../components/consts";
+
+.profile {
+  padding-top: 1px;
+  padding-bottom: 73px;
+
+  &__content {
+    margin-top: 19px;
+    display:flex;
+  }
+  picture {
+    margin-left: -20px;
+  }
+}
+
+// .button {
+//   margin-top: 0;
+//   margin-bottom: 20px;
+//   background-color: #FFFFFF;
+//   color: #000000;
+
+//   &:hover, &:active {
+//     background-color: #000000;
+//     color: #FFFFFF;
+//   }
+// }
+
+.profile-user {
+  margin-left: 8.5%;
+  margin-top: 3%;
+
+  &__form {
+    margin-bottom: 33px;
+  }
+
+  &__inform {
+    padding-bottom: 18px;
+  }
+  &__input {
+    border: none;
+  }
+}
+
+.change {
+  &__psw, &__data, &__del {
+    margin-top: 16px;
+    padding: 5px 10px;
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 2.5px solid #070707;
+
+    &:hover, &:active {
+      background-color: #000000;
+      color: #FFFFFF;
+    }
+  }
+}
+
+.modalEditpsw-bg {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background: rgba(246, 246, 246, 0.99);
+
+  &_close {
+    display: none;
+  } 
+}
+
+.modalEditpsw-window {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 38px 36px;
+  margin: auto;
+  width: 90%;
+  max-width: 370px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  line-height: 16px;
+  background-color: #FFFFFF;
+  border: 2.5px solid #070707;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 42px 56px;
+  }
+
+  @media (max-width: 450px) {
+    padding: 35px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    outline: none;;
+    border: 2.5px solid #E5E5E5;
+    transition: $transition-duration;
+
+  
+    &:hover, &:active, &:focus {
+      border: 2.5px solid #828282;
+    }
+
+    @media (max-width: 375px) {
+      padding: 12px;
+      margin-bottom: 14px;
+    }
+  }
+
+  &__label {
+    margin-bottom: 6px;
+
+    @media (max-width: 375px) {
+      margin-bottom: 5px;
+    }
+  }
+
+  &__button {
+    width: 190px;
+    padding: 10px 0;
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 2.5px solid #070707;
+
+    &:hover, &:active {
+      background-color: #000000;
+      color: #FFFFFF;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: -3px;
+    right: -35px;
+    width: 25px;
+    height: 25px;
+    color: #FFFFFF;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: $transition-duration;
+
+    @media (max-width: 768px) {
+      right: 0px;
+      top: -25px;
+    }
+
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      transform: rotate(45deg);
+      height: 114%;
+      width: 3px;
+      background-color: #070707;
+      border-radius: 5px;
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &:active {
+      opacity: 0.3;
+    }
+  }
+}
+
+.modalEditDate-bg {
+  @extend .modalEditpsw-bg;
+  
+  &_close {
+    display: none;
+  } 
+}
+
+.modalEditDate-window {
+  @extend .modalEditpsw-window;
+  max-width: 680px;
+
+  &__user {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 375px) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__inform {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 290px;
+    margin-right: 3%;
+
+    @media (max-width: 375px) {
+      margin-right: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__input {
+    @extend .modalEditpsw-window__input;
+  }
+
+  &__label{
+    @extend .modalEditpsw-window__label;
+  }
+  &__button {
+    @extend .modalEditpsw-window__button;
+    width: 174px;
+  }
+
+  &__close {
+    @extend .modalEditpsw-window__close;
+  }
+}

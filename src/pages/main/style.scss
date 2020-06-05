@@ -4,6 +4,11 @@
   font-size: $fs-primary;
 }
 
+.main-title {
+  width: 100%;
+  max-width: 319px;
+}
+
 .slider {
   padding-bottom: 61px;
 
@@ -12,19 +17,20 @@
     flex-wrap: wrap;
   }
 
-
   &__text {
     width: 100%;
     max-width: 226px;
-    margin-left: 31px;
+    // margin-left: 31px;
     padding-top: 83px;
     font-family: $primary-font;
-    
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+        
     @media (max-width: 650px) {
       padding-top: 20px;
     }
   }
-  
 
   &__img {
     width: 100%;
@@ -58,11 +64,10 @@
   }
 }
 
-.button-prev {
+.button-prev, .slide-prev {
   border: 2.5px solid #070707;
   box-sizing: border-box;
   border-radius: 21px;
-  transform: rotate(-180deg);
   width: 42px;
   height: 42px;
   background-color: #FAFAFA;
@@ -81,8 +86,8 @@
   &::after, &::before {
     content: "";
     position: absolute;
-    margin-top: -8%;
-    margin-left: -0.6%;
+    margin-top: -7%;
+    // margin-left: -0.6%;
     transform: rotate(45deg);
     height: 17px;
     width: 3px;
@@ -93,31 +98,56 @@
       background-color:#828282;
     }
 
-    @media (max-width: 450px) {
-      width: 1px;
-      height: 5px;
-    }
+    // @media (max-width: 450px) {
+    //   width: 1px;
+    //   height: 5px;
+    // }
   }
 
   &::before {
-    margin-top: -40.3%;
-    margin-left: -1%;
+    margin-top: -33.3%;
+    // margin-left: -1%;
     transform: rotate(-45deg);
 
-    @media (max-width: 450px) {
-      margin-top: 6.3%;
-    }
+    // @media (max-width: 450px) {
+    //   margin-top: 6.3%;
+    // }
   }
 }
 
-.button-next {
+.slide-container {
+  position: relative;
+}
+
+.slide-prev, .slide-next {
+  border-radius: initial;
+  border: none;
+  background-color: initial;
+  padding-left: 0;
+  position: absolute;
+  top: 44.5%;
+  zoom: 1.5;
+
+  &:hover, &:focus {
+    border: none;
+    color: #828282;
+  }
+}
+
+.slide-prev {
+  left: 3%;
+}
+
+.slide-next{
+  left: 91%;
+}
+
+.button-next, .slide-next {
   @extend .button-prev;
   transform: rotate(0deg)
 }
 
 .about-me {
-  height: 615px;//delete
-
   overflow: hidden;
   padding-top: 31px;
   padding-bottom: 88px;
@@ -128,12 +158,27 @@
     justify-content: center;
   }
 
-  &__title {
-    padding-bottom: 5px;//delete
-    text-align: center;
-    font-weight: bold;
-    font-size: $fs-title;
-    line-height: 41px;
+  &__list {
+    padding-left: 10px;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;// 
+
+    & li:nth-child(2){
+      margin-left: 110px;
+
+      @media (max-width: 650px) {
+        margin-left: 0;
+      }
+
+      & span:nth-child(2)::before {
+        left: 4.5%;
+      }
+      & span:nth-child(2)::after {
+          right: 85.5%;
+      }
+    }
   }
 
   &__item {
@@ -198,22 +243,35 @@
   }
 }
 
-.row {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;// 
+.pagination__slide {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin: 0 2px;
+  background-color: #E5E5E5;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
 
-  // &:nth-child(2)::before {
-  //   left: -2px;
-  //   width: 5%;
-  // }
+  &:hover {
+    background-color: #070707;
+  }
 
-  // &:nth-child(2)::after {
-  //   // left: -2px;
-  //   // width: 87.5%;
-  // }
+  &_active {
+    background-color: #070707;
+  }
 }
+
+// .row {
+//   // &:nth-child(2)::before {
+//   //   left: -2px;
+//   //   width: 5%;
+//   // }
+//   // &:nth-child(2)::after {
+//   //   // left: -2px;
+//   //   // width: 87.5%;
+//   // }
+// }
 
 .skills {
   // height: 334px;
@@ -232,7 +290,14 @@
     margin-top: 23px;
     margin-bottom: 52px;
   }
+}
 
+.loader {
+  border: 0px solid #E5E5E5;;
+  background-color: #E5E5E5;;
+  border-left: 87px solid #070707;
+  height: 9px;
+  margin-top: 10px;
 }
 
 .program {
@@ -257,7 +322,6 @@
     flex-direction: column;
     text-align: center;
   }
-
 }
 
 .portfolio {
@@ -292,7 +356,7 @@
 
   &__link {
     color: #FFFFFF;
-    border-bottom: 2px dashed #FFFFFF;
+    border-bottom: 1.5px dashed #FFFFFF;
   }
 
   &__text {
