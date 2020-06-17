@@ -10,43 +10,95 @@
     <link rel="shortcut icon" href="/static/images/favicon.ico">
     <link rel="stylesheet" href="/../common.css">
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
     <title>Antonina's blog</title>
   </head>
 
   <body>
     @@include('header/index.html')
     <main class="main container-back">
-      <section class="slider container">
-        <div class="slider__content"> 
+      <section class="content container">
+        <div class="content__content"> 
           <h1 class="main-title">Antonina Antoninovna</h1>
-          <p class="slider__text">Future front-end developer 23 years old, Tolyatti</p>  
+          <p class="content__text">Future front-end developer 23 years old, Tolyatti</p>
+          <div class="menu container menu__mobile_js">
+            <button class="menu__button-mobile"></button>
+            <button class="menu__button-mobile"></button>
+            <button class="menu__button-mobile"></button>
+          </div>    
         </div>
-        <div class="slider__images">
-          <picture>
-            <source 
-              media="(max-width: 767px)"
-              srcset="/../../static/images/antonina-mobile_1x.jpg?1 1x, /../../static/images/antonina-mobile_2x.jpg?1 2x">
-            <source
-              media="(max-width: 1265px)" 
-              srcset="/../../static/images/antonina-tablet_1x.jpg?1 1x, /../../static/images/antonina-tablet_2x.jpg?1 2x" >
-            <img
-              srcset="/../../static/images/antonina_1x.jpg?2 1x, /../../static/images/antonina_2x.jpg?1 2x"
-              src="/../../static/images/antonina_1x.jpg?2"
-              class="slider__img" 
-              alt="image of Antonina">
-          </picture>
-
-          <div class="flipping-slider">
-            <div class="flipping-slider__nav">
-              <button class="button-prev" type="button" ></button>
-              <div class="pagination" style="text-align:center">
-                <span class="pagination__slide pagination__slide_active" onclick=""></span>
-                <span class="pagination__slide" onclick=""></span>
-                <span class="pagination__slide" onclick=""></span>
-                <span class="pagination__slide" onclick=""></span>
+        
+        <div class = "slider">
+          <div class="slider__wrapper">
+            <div class="slider__inner-wrapper"> 
+              <div class="slider_slide">
+                <picture>
+                  <source 
+                    media="(max-width: 767px)"
+                    srcset="/../../static/images/antonina-mobile_1x.jpg?1 1x, /../../static/images/antonina-mobile_2x.jpg?1 2x">
+                  <source
+                    media="(max-width: 1265px)" 
+                    srcset="/../../static/images/antonina-tablet_1x.jpg?1 1x, /../../static/images/antonina-tablet_2x.jpg?1 2x" >
+                  <img
+                    srcset="/../../static/images/antonina_1x.jpg?2 1x, /../../static/images/antonina_2x.jpg?1 2x"
+                    src="/../../static/images/antonina_1x.jpg?2"
+                    class="slider__img" 
+                    alt="image of Antonina">
+                </picture>
               </div>
-              <button class="button-next" type="button"></button>
+              <div class="slider_slide">
+                <picture>
+                  <source 
+                    media="(max-width: 767px)"
+                    srcset="/../../static/images/antonina-mobile_1x.jpg?1 1x, ./../../static/images/antonina-mobile_2x.jpg?1 2x">
+                  <source
+                    media="(max-width: 1265px)" 
+                    srcset="/../../static/images/antonina-tablet_1x.jpg?1 1x, ./../../static/images/antonina-tablet_2x.jpg?1 2x" >
+                  <img
+                    srcset="/../../static/images/antonina_1x.jpg?2 1x, ./../../static/images/antonina_2x.jpg?1 2x"
+                    src="/../../static/images/antonina_1x.jpg?2"
+                    class="slider__img" 
+                    alt="image of Antonina">
+                </picture>
+              </div>
+              <div class="slider_slide">
+                <picture>
+                  <source 
+                    media="(max-width: 767px)"
+                    srcset="/../../static/images/antonina-mobile_1x.jpg?1 1x, ./../../static/images/antonina-mobile_2x.jpg?1 2x">
+                  <source
+                    media="(max-width: 1265px)" 
+                    srcset="/../../static/images/antonina-tablet_1x.jpg?1 1x, ./../../static/images/antonina-tablet_2x.jpg?1 2x" >
+                  <img
+                    srcset="/../../static/images/antonina_1x.jpg?2 1x, ./../../static/images/antonina_2x.jpg?1 2x"
+                    src="/../../static/images/antonina_1x.jpg?2"
+                    class="slider__img" 
+                    alt="image of Antonina">
+                </picture>
+              </div>
+              <div class="slider_slide">
+                <picture>
+                  <source 
+                    media="(max-width: 767px)"
+                    srcset="/../../static/images/antonina-mobile_1x.jpg?1 1x, ./../../static/images/antonina-mobile_2x.jpg?1 2x">
+                  <source
+                    media="(max-width: 1265px)" 
+                    srcset="/../../static/images/antonina-tablet_1x.jpg?1 1x, ./../../static/images/antonina-tablet_2x.jpg?1 2x" >
+                  <img
+                    srcset="/../../static/images/antonina_1x.jpg?2 1x, ./../../static/images/antonina_2x.jpg?1 2x"
+                    src="/../../static/images/antonina_1x.jpg?2"
+                    class="slider__img" 
+                    alt="image of Antonina">
+                </picture>
+              </div>
             </div>
+          </div>
+
+          <div class="button-panel">
+            <button class="button-prev button-prev_back"></button>
+            <div class="button-panel__pagination"></div>
+            <button class="button-next button-next_next"></button>
+          </div>
         </div>
       </section>
 
@@ -84,28 +136,44 @@
         <ul class="program__list">
           <li class="program__item">
             <img class="program__img" src="/../../static/images/HTML_5.svg" alt="logo of HTML_5">
-            <p>HTML 5</p>
-            <span class="loader"></span>
+            <p class="program__text">HTML 5</p>
+            <p class="program__load">
+              <span class="program__persent">85%</span>
+              <span class="program__loader" style="border-left: 118px solid #070707;"></span>
+            </p>
+              
           </li>
           <li class="program__item">
             <img class="program__img" src="/../../static/images/CSS_SCSS.svg" alt="logo of CSS SCSS" >
-            <p>CSS/SCSS</p>
-            <span class="loader"></span>  
+            <p class="program__text">CSS/SCSS</p>
+            <p class="program__load">
+              <span class="program__persent">55%</span>
+              <span class="program__loader" style="border-left: 74px solid #070707;"></span>
+            </p>
           </li>
           <li class="program__item">
             <img class="program__img" src="/../../static/images/JavaScript.svg" alt="logo of JavaScript">
-            <p>JavaScript</p>
-            <span class="loader"></span>
+            <p class="program__text">JavaScript</p>
+            <p class="program__load">
+              <span class="program__persent">5%</span>
+              <span class="program__loader" style="border-left: 10px solid #070707;"></span>
+            </p>
           </li>
           <li class="program__item">
             <img class="program__img" src="/../../static/images/Git_GitHub.svg" alt="logo of Git GitHub">
-            <p>Git/GitHub</p>
-            <span class="loader"></span>
+            <p class="program__text">Git/GitHub</p>
+            <p class="program__load">
+              <span class="program__persent">15%</span>
+              <span class="program__loader" style="border-left: 21px solid #070707;"></span>
+            </p>
           </li>
           <li class="program__item">
             <img class="program__img" src="/../../static/images/Figma.svg" alt="logo of Figma">
-            <p>Figma</p>
-            <span class="loader"></span>
+            <p class="program__text">Figma</p>
+            <p class="program__load">
+              <span class="program__persent">80%</span>
+              <span class="program__loader" style="border-left: 115px solid #070707;"></span>
+            </p>
           </li>
         </ul>
       </section>
@@ -113,22 +181,72 @@
       <section class="portfolio">
         <h2 class="portfolio__title">Portfolio</h2>
         <div class="slide-container container">
-          <picture class="site">
-            <source 
-              media="(max-width: 560px)"
-              srcset="/../../static/images/site-mobile_1x.jpg?1 1x, /../../static/images/site-mobile_2x.jpg?1 2x">
-            <source
-              media="(max-width: 1060px)" 
-              srcset="/../../static/images/site-tablet_1x.jpg?1 1x, /../../static/images/site-tablet_2x.jpg?1 2x" >
-            <img
-              srcset="/../../static/images/site_1x.jpg?2 1x, /../../static/images/site_2x.jpg?1 2x"
-              src="/../../static/images/site_1x.jpg?2"
-              class="portfolio__img" 
-              alt="image site">
-          </picture>
-
-          <button class="slide-prev" onclick="" type="button"></button>
-          <button class="slide-next" onclick="" type="button"></button>
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <picture class="portfolio__picture">
+                  <source 
+                    media="(max-width: 375px)"
+                    srcset="/../../static/images/site-mobile_1x.jpg?1 1x, /../../static/images/site-mobile_2x.jpg?1 2x">
+                  <source
+                    media="(max-width: 750px)" 
+                    srcset="/../../static/images/site-tablet_1x.jpg?1 1x, /../../static/images/site-tablet_2x.jpg?1 2x" >
+                  <img
+                    srcset="/../../static/images/site_1x.jpg?2 1x, /../../static/images/site_2x.jpg?1 2x"
+                    src="/../../static/images/site_1x.jpg?2"
+                    class="portfolio__img" 
+                    alt="image site">
+                </picture>
+              </div>
+              <div class="swiper-slide">
+                <picture>
+                  <source 
+                    media="(max-width: 375px)"
+                    srcset="/../../static/images/site-mobile_1x.jpg?1 1x, /../../static/images/site-mobile_2x.jpg?1 2x">
+                  <source
+                    media="(max-width: 750px)" 
+                    srcset="/../../static/images/site-tablet_1x.jpg?1 1x, /../../static/images/site-tablet_2x.jpg?1 2x" >
+                  <img
+                    srcset="/../../static/images/site_1x.jpg?2 1x, /../../static/images/site_2x.jpg?1 2x"
+                    src="/../../static/images/site_1x.jpg?2"
+                    class="portfolio__img" 
+                    alt="image site">
+                </picture>
+              </div>
+              <div class="swiper-slide">
+                <picture>
+                  <source 
+                    media="(max-width: 375px)"
+                    srcset="/../../static/images/site-mobile_1x.jpg?1 1x, /../../static/images/site-mobile_2x.jpg?1 2x">
+                  <source
+                    media="(max-width: 750px)" 
+                    srcset="/../../static/images/site-tablet_1x.jpg?1 1x, /../../static/images/site-tablet_2x.jpg?1 2x" >
+                  <img
+                    srcset="/../../static/images/site_1x.jpg?2 1x, /../../static/images/site_2x.jpg?1 2x"
+                    src="/../../static/images/site_1x.jpg?2"
+                    class="portfolio__img" 
+                    alt="image site">
+                </picture>
+              </div>
+              <div class="swiper-slide">
+                <picture>
+                  <source 
+                    media="(max-width: 375px)"
+                    srcset="/../../static/images/site-mobile_1x.jpg?1 1x, /../../static/images/site-mobile_2x.jpg?1 2x">
+                  <source
+                    media="(max-width: 750px)" 
+                    srcset="/../../static/images/site-tablet_1x.jpg?1 1x, /../../static/images/site-tablet_2x.jpg?1 2x" >
+                  <img
+                    srcset="/../../static/images/site_1x.jpg?2 1x, /../../static/images/site_2x.jpg?1 2x"
+                    src="/../../static/images/site_1x.jpg?2"
+                    class="portfolio__img" 
+                    alt="image site">
+                </picture>
+              </div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
         </div>
         
         <div class="portfolio__content container">
@@ -139,11 +257,14 @@
             The site is responsive and cross-browser, but without adding interactivity via JavaScript.</span>
           </div>
         </div>
+      
       </section>
       @@include('button-fixed/index.html')
     </main>
     @@include('footer/index.html')
-    <script src="index.js"></script>
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
     <script src="/../../static/images/setting.js"></script>
+    <script src="/../../static/images/form.js"></script>
+    <script src="index.js"></script> 
   </body>
 </html>

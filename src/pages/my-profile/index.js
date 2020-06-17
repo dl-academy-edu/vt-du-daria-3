@@ -1,8 +1,10 @@
+console.log("Change password", "Change other data")
+
 /***Change password***************************************************************************/
-var modalEditpsw = document.querySelector(".modalEditpsw-bg_js");
-var buttonOpenEditpsw = document.querySelector(".change__psw_js");
-var buttonCloseEditpsw = document.querySelector(".modalEditpsw-window__close_js");
-var input3 = document.querySelector(".modalEditpsw-window__input_js");
+let modalEditpsw = document.querySelector(".modalEditpsw-bg_js");
+let buttonOpenEditpsw = document.querySelector(".change__psw_js");
+let buttonCloseEditpsw = document.querySelector(".modalEditpsw-window__close_js");
+let input3 = document.querySelector(".modalEditpsw-window__input_js");
 
 function modalAdd(){
   modalEditpsw.classList.remove("modalEditpsw-bg_close");
@@ -47,3 +49,43 @@ window.addEventListener("keydown", function (event) {
     buttonOpenEditDate.focus();
   }
 });
+
+(function () {
+  //*Validation form***Change password***********************************************************/
+  let formModalEditPsw = document.forms.modalEditPsw;
+  console.log(formModalEditPsw);
+
+  formModalEditPsw.addEventListener ("submit", function (event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const values = getValuesForm(form);
+    console.log(values);
+
+    let errors = {};
+    if (values.oldPassword.length < 1){
+      errors.oldPassword = "This field is required";
+    }
+    if (values.newPassword.length < 1){
+      errors.newPassword = "This field is required";
+    }
+    if (values.repNewPassword.length < 1){
+      errors.repNewPassword = "This field is required";
+    }
+
+    setFormErrors (form, errors);
+  });
+
+  /***Change other data**************************************************************************/
+  let formModalEditDate = document.forms.modalEditDate;
+  console.log(formModalEditDate);
+
+  formModalEditDate.addEventListener ("submit", function (event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const values = getValuesForm(form);
+    console.log(values);
+  });
+})();
+//*********************************************************************************************** */

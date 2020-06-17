@@ -1,7 +1,7 @@
 @import './consts';
 
 .footer {
-  height: 510px;//delete
+  min-height: 510px;//delete
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -45,17 +45,30 @@
       background-color: #FFFFFF;
       color: #070707;
     }
-
-    // &:active {
-    //   background-color: #FFFFFF;
-    //   color: #070707;
-    //}
   }
 }
 
+.modal-bg {
+  z-index: 2;
+}
 .modal-window {
   &__button {
     @extend .modalReg-window__button;
+  }
+
+  &__text:hover, &__text:focus{
+    color: #473c3c;
+  }
+
+  &__lable > input:hover ~ span,
+  &__lable > input:focus ~ span,
+  &__lable > input:checked ~ span {
+    color: #473c3c;
+    cursor: pointer;
+  }
+  &__click:before:checked {
+    border: brown;
+
   }
 }
 

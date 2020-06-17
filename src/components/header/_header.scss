@@ -10,21 +10,13 @@
   line-height: $lh-primary;
   font-weight: bold;
 
-  @media (max-width: 1265px) {
-    padding: 0 8% 31px;
-  }
-
-  @media (max-width: 375px) {
-    margin: 0;
-  }
-
   &__content {
     justify-content: space-between;
     @extend %flex-and-center;
-    padding-top: 22px;
+    padding-top: 10px;
     padding-bottom: 5px;
 
-    @media (max-width: 650px) {
+    @media (max-width: 375px) {
       display: none;
     }
   }
@@ -45,12 +37,17 @@
   }
 
   &__item {
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
     margin-right: 20px;
     color: #828282;
     transition: $transition-duration;
 
     &:hover {
-      opacity: 0.5;
+      color: #070707;
     }
   }
 
@@ -161,19 +158,53 @@
 
   &__lable {
     @extend .modal-window__lable;
+
+      > input:hover ~ span,
+      > input:focus ~ span {
+        color: #473c3c;
+        cursor: pointer;
+        
+    }
+
+    > input:checked ~ span {
+      color: #070707;
+      cursor: pointer;
+    }
   }
 
   &__click {
     @extend .modal-window__click;
+   
     &:hover, &:focus {
       border: 2.5px solid #828282;
     }
+  }
+
+  &__accept:focus + &__click,
+  &__accept:hover + &__click,
+  &__accept:checked + &__click {
+    border: 2px solid #828282;
+  }
+
+  &__accept:checked + &__click::before {
+    content: url("/../../static/images/accept.svg");
+    margin-left: -2px;
+    width: 19px;
+    height: 19px;
+    border-radius: 3px;
+    position: absolute;
+    top: 60%;
+    left: 75%;
+    transform: translate(-50%,-50%);
   }
 
   &__text {
     @extend .modal-window__text;
     &:hover, &:focus {
       color: #828282;
+    }
+    &:checked {
+      color: #070707;
     }
   }
 
@@ -195,9 +226,162 @@
       color: #070707;
       border: 2.5px solid #070707;
     }
+
   }
 }
 
 .modalReg-window__close {
   @extend .modal-window__close;
+}
+
+.menu {
+  display: none;
+
+  @media (max-width: 375px) {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    cursor: pointer;
+    margin: -57px auto 0 80%;
+    order: 2;
+  }
+
+  &__button-mobile {
+    width: 31px;
+    margin-top: 5px;
+    //padding-top: 2px;
+    //padding-bottom: 1px;
+    background-color: #070707;
+    border: 1px solid;
+    border-radius: 15px;
+  }
+}
+
+
+/*********************************************************/
+.mobile-header {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  font-size: 14px;
+  line-height: 19px;
+  background-color: rgba(246, 246, 246, 0.99);
+  transition: 1s transform;
+  transform: translateX(-100%);
+  display: none;
+
+  @media (max-width: 768px) {
+    display: initial;
+  }
+
+  &_open {
+    transform: translateX(0);
+  }
+
+  &__content {
+    background-color:#FFFFFF;
+    background: rgba(246, 246, 246, 0.99);
+    //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.13);
+    //min-height: 400px;
+    padding: 25px 8%;
+  }
+
+  &__logo {
+    &-img {
+      width: 62px;
+      height: 32px;
+      transition: $transition-duration;
+
+      @media (max-width: 450px) {
+        width: 42px;
+        height: 22px;
+      }
+    }
+
+    &:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 5px;
+    left: 49%;
+    width: 15px;
+    height: 15px;
+    border: none;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    transition: $transition-duration;
+
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      transform: rotate(45deg);
+      height: 100%;
+      width: 1px;
+      background-color: black;
+      border-radius: 5px;
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &:active {
+      opacity: 0.3;
+    }
+  }
+
+  &__cap {
+    display: flex;
+    position: relative;
+
+    justify-content: space-between;
+
+    @media (max-width: 375px) {
+      display: flex;
+      padding-right: 10px;
+      justify-content: space-between;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: -30px;
+  }
+
+  &__item {
+    display: block;
+    margin-bottom: 20px;
+    font-size: $fs-primary;
+    line-height: 22px;
+    color: $color_text-header;
+    transition: $transition-duration;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  
+  &__contact {
+    display: block;
+    text-align: center;
+    // width: 320px;
+    margin-top: 15px;
+    color: $color_text-header;
+    font-weight: bold;
+  }
 }

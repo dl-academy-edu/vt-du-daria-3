@@ -64,8 +64,8 @@ img {
 }
 
 .main-title {
+  margin-top: 0;
   padding-bottom: 4px;
-  padding-top: 5px;
   margin-bottom: 0;
   
   font-family: 'Gilroy', sans-serif;
@@ -82,6 +82,10 @@ img {
   font-weight: bold;
   font-size: $fs-title;
   line-height: 41px;
+}
+
+.fildImportant {
+  color: red;
 }
 
 /************************************************************************/
@@ -107,9 +111,6 @@ img {
   margin: auto;
   width: 90%;
   max-width: 680px;
-  // font-family: $third-font;
-  
-  // font-size: $fs-window-text;
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
@@ -162,7 +163,7 @@ img {
     transition: $transition-duration;
 
   
-    &:hover, &:active, &:focus {
+    &:hover, &:active, &:focus, &:checked {
       border: 2.5px solid #828282;
     }
 
@@ -192,6 +193,7 @@ img {
   }
 
   &__click {
+    position: relative;
     min-width: 19px;
     height: 19px;
     border-radius: 3px;
@@ -200,19 +202,25 @@ img {
     border-radius: 3px;
   }
 
-  &__accept:focus + &__click {
-    border: 2px solid #828282;
-  }
-
+  &__accept:focus + &__click,
   &__accept:hover + &__click {
     border: 2px solid #828282;
   }
 
+  &__accept:checked + &__click {
+    border: 2px solid #070707;
+  }
+
   &__accept:checked + &__click::before {
-    content: url("/../../static/images/accept.png");
-    margin: auto;
-    width: 14px;
-    height: 14px;
+    content: url("/../../static/images/accept.svg");
+    margin-left: -2px;
+    width: 19px;
+    height: 19px;
+    border-radius: 3px;
+    position: absolute;
+    top: 60%;
+    left: 75%;
+    transform: translate(-50%,-50%);
   }
 
   &__text {
@@ -242,10 +250,10 @@ img {
     cursor: pointer;
     transition: $transition-duration;
 
-    @media (max-width: 768px) {
-      right: 0px;
-      top: -25px;
-    }
+    // @media (max-width: 768px) {
+    //   right: 0px;
+    //   top: -25px;
+    // }
 
     &::before, &::after {
       content: "";
@@ -272,24 +280,32 @@ img {
   }
 }
 
-// textarea {
-//   width: 600px;
-//   height: 150px; 
-//   resize: none;
-// } 
+textarea {
+  width: 600px;
+  height: 150px; 
+  resize: none;
+} 
 
 fieldset {
   border: none;
   padding: 0;
 }
 
+.is-invalid {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  color: #dc3545 ;
+  margin-top: -16px;
+  margin-bottom: 16px;
+}
+
 //connecting components
 @import "./button/button";
 @import "./header/header";
-// @import "./breadcrumbs/breadcrumbs";
 @import "./link-button/link-button";
 @import "./link-pages/link-pages";
 @import "./footer/footer";
 @import "./footer/footer";
 @import "./button-fixed/button-fixed";
-// @import "./setting-grid";

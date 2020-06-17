@@ -1,4 +1,4 @@
-console.log("setting.js подключился")
+console.log("setting.js подключился");
 
 /***Sign in***************************************************************************/
 var modalSignIn = document.querySelector(".modalSign-bg_js");
@@ -59,53 +59,78 @@ var input = document.querySelector(".modal-window__input_js");
 buttonOpen.addEventListener("click", function(){
   modal.classList.remove("modal-bg_close");
   input.focus();
-  console.log (".remove");
 });
 
 buttonClose.addEventListener("click",function(){
   modal.classList.add("modal-bg_close");
   buttonOpen.focus();
-  console.log (".add");
 });
 
 window.addEventListener("keydown", function (event) {
   if(!modal.classList.contains("modal-bg_close") && event.code==="Escape"){
     modal.classList.add("modal-bg_close");
     buttonOpen.focus();
-    console.log ("esc");
   }
 });
 
-// var buttonMobileHeader = document.querySelector(".header__button-mobile_js");
-// var buttonCloseMobileHeader = document.querySelector(".mobile-header__close_js");
-// var mobileHeader = document.querySelector(".mobile-header");
+var buttonMobileHeader = document.querySelector(".menu__mobile_js");
+var buttonCloseMobileHeader = document.querySelector(".mobile-header__close_js");
+var mobileHeader = document.querySelector(".mobile-header");
 
-// //open
-// buttonMobileHeader.addEventListener("click",function(){
-//   mobileHeader.classList.add("mobile-header_open");
-// });
+//open
+buttonMobileHeader.addEventListener("click",function(){
+  mobileHeader.classList.add("mobile-header_open");
+});
 
-// //close
-// buttonCloseMobileHeader.addEventListener("click", function(){
-//   mobileHeader.classList.remove("mobile-header_open");
-// });
+//close
+buttonCloseMobileHeader.addEventListener("click", function(){
+  mobileHeader.classList.remove("mobile-header_open");
+});
 
 //***button-fixed********************************************************************************/
 (function(){
 
-	let btnFix = document.querySelector(".btn-fixed_js");
+  let btnFix = document.querySelector(".btn-fixed_js");
+  let timer;
+  let scrolled;
 
 	window.addEventListener('scroll', function(event){
 		if (window.pageYOffset > 1500){
-			btnFix.classList.remove("btn-fixed_hidden");
-			btnFix.addEventListener("click",
-				function topUp(){
-          document.documentElement.scrollTop = 0;
-				}
-			)
+      btnFix.classList.remove("btn-fixed_hidden");
 		}
 		else if (window.pageYOffset < 1500) {
-			btnFix.classList.add("btn-fixed_hidden");
+      btnFix.classList.add("btn-fixed_hidden");
 		}
-	});
+  });
+
+  btnFix.addEventListener("click", function(){
+    scrolled = window.pageYOffset;
+    scrollUp();
+  });
+  
+  function scrollUp(){
+    if (scrolled > 0) {
+      window.scrollTo(0, scrolled);
+      scrolled = scrolled - 50;
+      timer = setTimeout(scrollUp, 5);
+    }
+    else {
+      clearTimeout(timer);
+      window.scrollTo(0, 0);
+    }
+  }
 })();
+
+//**************************************/
+function btnFixLeft(){
+  let WW_width = document.documentElement.clientWidth; 
+  console.log("ширина", WW_width);
+  let btnFix = document.querySelector(".btn-fixed_js");
+  console.log(btnFix);
+  
+  if (WW_width < 1400) {
+    btnFix.style.left = (WW_width-100) + "px";
+  }
+}
+btnFixLeft();
+
