@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="desciption" content="page my profile">
+    <meta name="keywords" content="profile...">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/static/fonts/gilroy.css" />
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="/../common.css">
+    <link rel="stylesheet" href="style.css">
+    <title>My Profile</title>
+  </head>
+  <body>
+    @@include('header/index.html')
+    <main class="container-back">
+      <div class="profile container">
+        <h1 class="main-title">My profile</h1>
+        <div class="profile__content">
+          <picture>
+            <source 
+              media="(max-width: 767px)"
+              srcset="/../../static/images/profile-mobile_1x.jpg?1 1x, /../../static/images/profile-mobile_2x.jpg?1 2x">
+            <source
+              media="(max-width: 1265px)" 
+              srcset="/../../static/images/profile-tablet_1x.jpg?1 1x, /../../static/images/profile-tablet_2x.jpg?1 2x" >
+            <img
+              srcset="/../../static/images/profile_1x.jpg?2 1x, /../../static/images/profile_2x.jpg?1 2x"
+              src="/../../static/images/profile_1x.jpg?2"
+              class="slider__img" 
+              alt="image of profile">
+          </picture>
+
+          <div class="profile-user">
+            <form class="profile-user__form" action="https://form-data-dl.herokuapp.com/api/messages" method="POST">
+              
+              <div class="profile-user__inform">
+                <label class="profile-user__label" for="user-name"> Name:</label>
+                <input class="profile-user__input profile-user__input_js" id="user-name" type="text" name="name" value="Ksenia">
+              </div>
+              <div class="profile-user__inform">
+                <label class="profile-user__label" for="user-surname">Surname:</label>
+                <input class="profile-user__input" id="user-surname" type="text" name="surname" value="Larioshkina">
+              </div>
+              
+              <div class="profile-user__inform">
+                <label class="profile-user__label" for="user-email">Email:</label>
+                <input class="profile-user__input" id="user-email" type="text" name="email" value="larioshkina@gmail.ru">
+              </div>
+
+              <div class="profile-user__inform">
+                <label class="profile-user__label" for="user-password">Password:</label>
+                <input class="profile-user__input" id="user-password" type="password" name="password" value="***************">
+              </div>
+
+              <div class="profile-user__inform">
+                <label class="profile-user__label" for="user-location">Location:</label>
+                <input class="profile-user__input" id="user-location" type="text" name="location" value="Moscow">
+              </div>
+
+              <div class="profile-user__inform">
+                <label class="profile-user__label" for="user-age">Age:</label>
+                <input class="profile-user__input" id="user-age" type="text" name="age" value="17"> 
+              </div>
+            </form>
+            
+            <div class="change">
+              @@include('button/index.html',{
+                "text": "Change password",
+                "class": "change__psw change__psw_js",
+                "type": "submit",
+                "value": "password"
+              })
+              @@include('button/index.html',{
+                "text": "Change other data",
+                "class": "change__data change__data_js",
+                "type": "submit",
+                "value": "date"
+              })
+              @@include('button/index.html',{
+                "text": "Delete account",
+                "class": "change__del change__del_js",
+                "type": "submit",
+                "value": "delete"
+              })   
+            </div>
+        </div>
+      </div>
+      <!-- /***Editing password************************************************************************************************/ -->
+      <div class="modalEditpsw-bg modalEditpsw-bg_close modalEditpsw-bg_js">
+        <form class="modalEditpsw-window" action="https://form-data-dl.herokuapp.com/api/messages" method="POST" name ="modalEditPsw">
+          <label class="modalEditpsw-window__label" for="oldpsw">Old password <span class="fildImportant">*</span></label>
+          <input class="modalEditpsw-window__input modalEditpsw-window__input_js" id="oldpsw" type="password" name="oldPassword">
+
+          <label class="modalEditpsw-window__label" for="newPsw">New password <span class="fildImportant">*</span></label>
+          <input class="modalEditpsw-window__input" id="newPsw" type="password" name="newPassword">
+
+          <label class="modalEditpsw-window__label" for="repeatNewPsw">Repeat new password <span class="fildImportant">*</span></label>
+          <input class="modalEditpsw-window__input" id="repeatNewPsw" type="password" name="repNewPassword">
+          
+          @@include('button/index.html',{
+            "text": "Change password",
+            "class": "modalEditpsw-window__button",
+            "type": "send",
+            "value": "send"
+          })
+          <button class="modalEditpsw-window__close modalEditpsw-window__close_js" type="button" value="closed"></button>
+        </form>
+      </div> 
+      <!-- /***Editing data************************************************************************************************/ -->
+      <div class="modalEditDate-bg modalEditDate-bg_close modalEditDate-bg_js">
+        <form class="modalEditDate-window" action="https://form-data-dl.herokuapp.com/api/messages" method="POST" name="modalEditDate">
+          <label class="modalEditDate-window__label" for="user-email">Email</label>
+          <input class="modalEditDate-window__input modalEditDate-window__input_js" id="user-email" type="text" name="email">
+          
+          <div class="modalEditDate-window__user">
+            <div class="modalEditDate-window__inform">
+              <label class="modalEditDate-window__label" for="user-name">Name</label>
+              <input class="modalEditDate-window__input" id="user-name" type="text" name="user-name">
+            </div>
+            <div class="modalEditDate-window__inform">
+              <label class="modalEditDate-window__label" for="user-surname">Surname</label>
+              <input class="modalEditDate-window__input" id="user-surname" type="text" name="user-surname">
+            </div>
+          </div>
+    
+          <div class="modalEditDate-window__user">
+            <div class="modalEditDate-window__inform">
+              <label class="modalEditDate-window__label" for="user-loc">Location</label>
+              <input class="modalEditDate-window__input" id="user-loc" type="text" name="location">
+            </div>
+            <div class="modalEditDate-window__inform">
+              <label class="modalEditDate-window__label" for="user-age">Age</label>
+              <input class="modalEditDate-window__input" id="user-age" type="text" name="age">
+            </div>
+          </div>
+    
+          <div class="modalEditDate-window__user">
+            <div class="modalEditDate-window__inform">
+              <label class="modalEditDate-window__label" for="user-picture">Profile picture</label>
+              <input class="modalEditDate-window__input file file-1" id="user-picture" type="file" name="profile_picture">
+            </div>
+          </div>
+          
+          <fieldset class="modalEditDate-window__fieldset">
+            <label class="modalEditDate-window__lable">
+              <input class="modalEditDate-window__accept hidden" type="checkbox" name="accept" value="accept">
+              <span class="modalEditDate-window__click"></span>
+            </label>
+          </fieldset>
+          @@include('button/index.html',{
+            "text": "Submit changes",
+            "class": "modalEditDate-window__button",
+            "type": "send",
+            "value": "send"
+          })
+          <button class="modalEditDate-window__close modalEditDate-window__close_js" type="button" value="closed"></button>
+        </form>
+      </div> 
+    </main>
+    <!-- <script src="/../../static/js/index.js"></script> -->
+    <script src="./index.js"></script>
+    <script src="/../../static/images/setting.js"></script>
+    <script src="/../../static/images/form.js"></script>
+  </body>
+</html>

@@ -1,14 +1,17 @@
 
+@import "consts";
+
 body { 
-  font-family: 'Gilroy', sans-serif;
+  font-family: 'Gilroy';
   font-style: normal;
   font-weight: normal;
   margin: 0;
-  background-color: #F4F4F4;
+  background-color: #E5E5E5;
 }
 
 a { 
   text-decoration: none;
+  color: black;
 }
 
 li {
@@ -60,12 +63,11 @@ img {
   overflow: hidden;
 }
 
-.title {
+.main-title {
+  margin-top: 0;
   padding-bottom: 4px;
-  padding-top: 5px;
   margin-bottom: 0;
-  width: 100%;
-  max-width: 288px;
+  
   font-family: 'Gilroy', sans-serif;
   font-style: normal;
   font-weight: bold;
@@ -74,11 +76,236 @@ img {
   color: #070707;
 }
 
+.title {
+  padding-bottom: 5px;//delete
+  text-align: center;
+  font-weight: bold;
+  font-size: $fs-title;
+  line-height: 41px;
+}
+
+.fildImportant {
+  color: red;
+}
+
+/************************************************************************/
+.modal-bg {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background: rgba(246, 246, 246, 0.99);
+
+  &_close {
+    display: none;
+  } 
+}
+
+.modal-window {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 42px 36px;
+  margin: auto;
+  width: 90%;
+  max-width: 680px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  line-height: 16px;
+  background-color: #FFFFFF;
+  border: 2.5px solid #070707;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 42px 56px;
+  }
+
+  @media (max-width: 450px) {
+    padding: 35px;
+  }
+
+  &__user {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 375px) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__inform {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 290px;
+    margin-right: 3%;
+
+    @media (max-width: 375px) {
+      margin-right: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    padding: 17px 20px;
+    margin-bottom: 20px;
+    outline: none;
+    font-family: 'Gilroy', sans-serif;
+    // font-family: $primary-font;
+    border: 2.5px solid #E5E5E5;
+    transition: $transition-duration;
+
+  
+    &:hover, &:active, &:focus, &:checked {
+      border: 2.5px solid #828282;
+    }
+
+    @media (max-width: 375px) {
+      padding: 12px;
+      margin-bottom: 14px;
+    }
+  }
+
+  &__label {
+    margin-bottom: 6px;
+
+    @media (max-width: 375px) {
+      margin-bottom: 5px;
+    }
+  }
+  
+  &__fieldset {
+    padding: 0;
+    margin: 0 0 20px;
+    border: none;
+  }
+
+  &__lable {
+    display: flex;
+    cursor: pointer;
+  }
+
+  &__click {
+    position: relative;
+    min-width: 19px;
+    height: 19px;
+    border-radius: 3px;
+    border: 2px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 3px;
+  }
+
+  &__accept:focus + &__click,
+  &__accept:hover + &__click {
+    border: 2px solid #828282;
+  }
+
+  &__accept:checked + &__click {
+    border: 2px solid #070707;
+  }
+
+  &__accept:checked + &__click::before {
+    content: url("/../../static/images/accept.svg");
+    margin-left: -2px;
+    width: 19px;
+    height: 19px;
+    border-radius: 3px;
+    position: absolute;
+    top: 60%;
+    left: 75%;
+    transform: translate(-50%,-50%);
+  }
+
+  &__text {
+    margin-left: 8px;
+    color: #E5E5E5;
+  }
+
+  &__button {
+    width: 106px;
+    color: #E1E1E1;
+    background: #C1C1C1;
+
+    @media (max-width: 375px) {
+      width: 100px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: -3px;
+    right: -35px;
+    width: 25px;
+    height: 25px;
+    color: #FFFFFF;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: $transition-duration;
+
+    // @media (max-width: 768px) {
+    //   right: 0px;
+    //   top: -25px;
+    // }
+
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      transform: rotate(45deg);
+      height: 114%;
+      width: 3px;
+      background-color: #070707;
+      border-radius: 5px;
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &:active {
+      opacity: 0.3;
+    }
+  }
+}
+
+textarea {
+  width: 600px;
+  height: 150px; 
+  resize: none;
+} 
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+.is-invalid {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  color: #dc3545 ;
+  margin-top: -16px;
+  margin-bottom: 16px;
+}
+
 //connecting components
+@import "./button/button";
 @import "./header/header";
-// @import "./breadcrumbs/breadcrumbs";
-// @import "./button/button";
-// @import "./link-button/link-button";
-// @import "./link-pages/link-pages";
+@import "./link-button/link-button";
+@import "./link-pages/link-pages";
 @import "./footer/footer";
-// @import "./setting-grid";
+@import "./footer/footer";
+@import "./button-fixed/button-fixed";

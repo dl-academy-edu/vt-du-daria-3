@@ -4,9 +4,10 @@
       <a class="header__link" href="/">Home</a>
       <nav class="header__nav">
         <ul class="header__list">
-          <li><a class="header__item" href="/pages/my_blog/index.html">My blog</a></li>
-          <li><a class="header__item" href="/pages/sign-up/index.html">Sign up</a></li>
-          <li><a class="header__item" href="/pages/register/index.html">Register</a></li>
+          <li><a class="header__item" href="/pages/my-blog/index.html">My blog</a></li>
+          <li><a class="header__item" href="/pages/my-profile/index.html">My Profile</a></li>
+          <li><button class="header__item button-header sign_js">Sign in</button></li>
+          <li><button class="header__item button-header register_js">Register</button></li>
           <li><a class="header__item" href="/pages/homework_js/index.html">Homework js</a></li>
         </ul>
       </nav>
@@ -18,16 +19,90 @@
     
       <div class="mobile-header__cap">
         <button class="mobile-header__close mobile-header__close_js" type="button" value="closed"></button>
-        <a class="mobile-header__logo" href="/">Home</a>
       </div>
       <nav class="mobile-header__nav">
         <ul class="mobile-header__list">
-          <li><a class="header__item" href="/">Home</a></li>
-          <li><a class="header__item" href="/pages/my-blog/index.html">My blog</a></li>
-          <li><a class="header__item" href="/pages/sign-up/index.html">Sign up</a></li>
-          <li><a class="header__item" href="/pages/register/index.html">Register</a></li>
+          <li><a class="mobile-header__item" href="/">Home</a></li>
+          <li><a class="mobile-header__item" href="/pages/my-blog/index.html">My blog</a></li>
+          <li><a class="mobile-header__item" href="/pages/my-profile/index.html">My Profile</a></li>
+          <li><button class="mobile-header__item button-header sign_js">Sign up</button></li>
+          <li><button class="mobile-header__item button-header register_js">Register</a></li>
         </ul>
       </nav>
     </div>
   </div>
+
+  <!-- /***Sign in modal************************************************************************************************/ -->
+  <div class="modalSign-bg modalSign-bg_close modalSign-bg_js">
+    <form class="modalSign-window" action="https://form-data-dl.herokuapp.com/api/messages" method="POST" name="modal-Sign">
+      <label class="modalSign-window__label" for="email">Email <span class="fildImportant">*</span></label>
+      <input class="modalSign-window__input modalSign-window__input_js email_js" id="email" type="text" name="email">
+      <label class="modalSign-window__label" for="log-password">Password <span class="fildImportant">*</span></label>
+      <input class="modalSign-window__input password_js" id="log-password" type="password" name="password">
+      
+      @@include('button/index.html',{
+        "text": "Log in",
+        "class": "modalSign-window__button",
+        "type": "submit",
+        "value": "submit"
+      })
+      <button class="modalSign-window__close modalSign-window__close_js" type="button" value="closed"></button>
+    </form>
+  </div> 
+
+<!-- /***Register modal************************************************************************************************ -->
+  <div class="modalReg-bg modalReg-bg_close modalReg-bg_js">
+    <form class="modalReg-window" action="https://form-data-dl.herokuapp.com/api/messages" method="POST" name="modalReg">
+      <label class="modalReg-window__label" for="user-email">Email <span class="fildImportant">*</span></label>
+      <input class="modalReg-window__input modalReg-window__input_js email_js" id="user-email" type="text" name="email">
+      
+      <div class="modalReg-window__user">
+        <div class="modalReg-window__inform">
+          <label class="modalReg-window__label" for="user-name">Name? <span class="fildImportant">*</span></label>
+          <input class="modalReg-window__input" id="user-name" type="text" name="usName">
+        </div>
+        <div class="modalReg-window__inform">
+          <label class="modalReg-window__label" for="user-surname">Surname <span class="fildImportant">*</span></label>
+          <input class="modalReg-window__input" id="user-surname" type="text" name="usSurname">
+        </div>
+      </div>
+
+      <div class="modalReg-window__user">
+        <div class="modalReg-window__inform">
+          <label class="modalReg-window__label" for="user-psw">Password <span class="fildImportant">*</span></label>
+          <input class="modalReg-window__input password_js" id="user-psw" type="password" name="password">
+        </div>
+        <div class="modalReg-window__inform">
+          <label class="modalReg-window__label" for="user-reppsw">Repeat password <span class="fildImportant">*</span></label>
+          <input class="modalReg-window__input" id="user-reppsw" type="password" name="repPassword">
+        </div>
+      </div>
+
+      <div class="modalReg-window__user">
+        <div class="modalReg-window__inform">
+          <label class="modalReg-window__label" for="user-loc">Location <span class="fildImportant">*</span></label>
+          <input class="modalReg-window__input" id="user-loc" type="text" name="location">
+        </div>
+        <div class="modalReg-window__inform">
+          <label class="modalReg-window__label" for="user-age">Age <span class="fildImportant">*</span></label>
+          <input class="modalReg-window__input" id="use-rage" type="text" name="age">
+        </div>
+      </div>
+      
+      <fieldset class="modalReg-window__fieldset">
+        <label class="modalReg-window__lable">
+          <input class="modalReg-window__accept hidden" type="checkbox" name="accept" value="accept">
+          <span class="modalReg-window__click"></span>
+          <span class="modalReg-window__text">Checking on the button? you consent to the processing of your personal data.</span>
+        </label>
+      </fieldset>
+      @@include('button/index.html',{
+        "text": "Sign up",
+        "class": "modalReg-window__button",
+        "type": "submit",
+        "value": "submit"
+      })
+      <button class="modalReg-window__close modalReg-window__close_js" type="button" value="closed"></button>
+    </form>
+  </div> 
 </header>

@@ -28,6 +28,7 @@ function myFunkLes2(){
     }
     i++;
   }
+  console.log(useNum1);
 }
 
 btnLes2.onclick=myFunkLes2;
