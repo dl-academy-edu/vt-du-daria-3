@@ -31,20 +31,16 @@
   }
 
   &__link {
-    color: #1E0606;
+    color: #E5E5E5;
     // transition: $transition-duration;
 
-    &:hover {
-      color: #C29974;
+    &:hover, &:focus, &:active, &:checked {
+      color: #1E0606;
     }
   }
   
   &__link_active {
-    color: #C29974;
-  }
-  
-  &__prev {
-    transform: rotate(-180deg);
+    color: #1E0606;
   }
 }
 
@@ -55,10 +51,11 @@
   background-color: transparent;
   border: none;
   fill:#E4E1E1;
+  border-radius: 5px;
 
   &:hover {
-    // transition: $transition-duration;
-    fill:#C29974;
+    transition: $transition-duration;
+    opacity: 0.5;
   }
 
   &:active {
@@ -69,5 +66,4 @@
 
 .next {
   @extend .prev;
-  transform: rotate(-180deg);
 }

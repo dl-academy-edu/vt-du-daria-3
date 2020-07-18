@@ -16,85 +16,41 @@
   <body>
     @@include('header/index.html')
     <main class="container-back">
-      <!-- <div class="container"> -->
         <h1 class="main-title container">My blog</h1>
+
+        <div class="menu container menu__mobile_js">
+          <button class="menu__button-mobile"></button>
+          <button class="menu__button-mobile"></button>
+          <button class="menu__button-mobile"></button>
+        </div>    
         
         <div class="selection container">
-          <form class="selection__form" action="#" method="POST">
-            <fieldset class="selection__field tag"> 
+          <form class="selection__form" name="filterForm">
+            <fieldset class="selection__field tag">
               <span class="tag__title">Tags</span>
-              <ul class="tag__list">
-                <li class="tag__etem">
-                  <label class="tag__label">
-                    <input class="input hidden" type="checkbox" name="tag blue" value="blue" >
-                    <span class="click click_active" style="border:2.5px solid #2176FF"></span>
-                  </label>
-                </li>
-                <li class="tag__etem">
-                  <label class="tag__label">
-                    <input class="input hidden" type="checkbox" name="tag blue sky" value="blue-sky">
-                    <span class="click" style="border:2.5px solid #33A1FD;"></span>
-                  </label>
-                </li>
-                <li class="tag__etem">
-                  <label class="tag__label">
-                    <input class="input hidden" type="checkbox" name="tag-yellow" value="yellow">
-                    <span class="click" style="border:2.5px solid #FDCA40;"></span>
-                  </label>
-                </li>
-                <li class="tag__etem">
-                  <label class="tag__label">
-                    <input class="input hidden" type="checkbox" name="tag_purple" value="purple">
-                    <span class="click" style="border:2.5px solid #57E2E5;"></span>
-                  </label>
-                </li>
-                <li class="tag__etem">
-                  <label class="tag__label">
-                    <input class="input hidden" type="checkbox" name="tag_orange" value="orange">
-                    <span class="click" style="border:2.5px solid #F79824;"></span>
-                  </label>
-                </li>
-                <li class="tag__etem">
-                  <label class="tag__label">
-                    <input class="input hidden" type="checkbox" name="tag_pink" value="pink">
-                    <span class="click" style="border:2.5px solid#E08DAC;"></span>
-                  </label>
-                </li>
-                <li class="tag__etem">
-                  <label class="tag__label">
-                    <input class="input hidden" type="checkbox" name="tag_wiolet" value="wiolet">
-                    <span class="click" style="border:2.5px solid #6A7FDB;"></span>
-                  </label>
-                </li>
-                <li class="tag__etem">
-                  <label class="tag__label">
-                    <input class="input hidden" type="checkbox" name="tag_green" value="green">
-                    <span class="click" style="border:2.5px solid #45CB85;"></span>
-                  </label>
-                </li>
-              </ul>
+              <ul class="tag__list tag__list_js"></ul>
             </fieldset> 
 
             <fieldset class="selection__field view">
-              <span class="view__title">views</span>
+              <span class="view__title">Views</span>
               <ul class="view__list">
                 <li class="view__etem">
                   <label class="view__label">
-                    <input class="input hidden" type="radio" name="more" value="more-100">
+                    <input class="input hidden" type="radio" name="view" value="more-100">
                     <span class="clicker"></span>
                     <span class="text">more 100</span>
                   </label>
                 </li>
                 <li class="view__etem">
                   <label class="view__label">
-                    <input class="input hidden" type="radio" name="more" value="more-500">
+                    <input class="input hidden" type="radio" name="view" value="more-500" checked>
                     <span class="clicker clicker_active"></span>
                     <span class="text">more 500</span>
                   </label>
                 </li>
                 <li class="view__etem">
                   <label class="view__label">
-                    <input class="input hidden" type="radio" name="more" value="more-1000">
+                    <input class="input hidden" type="radio" name="view" value="more-1000">
                     <span class="clicker"></span>
                     <span class="text">more 1000</span>
                   </label>
@@ -107,9 +63,9 @@
               <ul class="comments__list">
                 <li class="comments__etem">
                   <label class="comments__label">
-                    <input class="input hidden" type="checkbox" name="comment" value="not-a-single">
-                    <span class="click click_active"></span>
-                    <span class="text">not a stage</span> 
+                    <input class="input hidden" type="checkbox" name="comment" value="not-a-single" checked>
+                    <span class="click"></span>
+                    <span class="text">not a single</span> 
                   </label>
                 </li>
                 <li class="comments__etem">
@@ -134,8 +90,8 @@
               <ul class="show__list">
                 <li class="show__etem">
                   <label class="show__label">
-                    <input class="input hidden" type="radio" name="show" value="show-5">
-                    <span class="clicker clicker_active"></span>
+                    <input class="input hidden" type="radio" name="show" value="show-5" checked>
+                    <span class="clicker"></span>
                     <span class="text">show 5</span>
                   </label>
                 </li>
@@ -154,8 +110,8 @@
               <ul class="sort__list">
                 <li class="sort__etem">
                   <label class="sort__label">
-                    <input class="input hidden" type="radio" name="sort" value="date">
-                    <span class="clicker clicker_active"></span>
+                    <input class="input hidden" type="radio" name="sort" value="date" checked>
+                    <span class="clicker"></span>
                     <span class="text">date</span>
                   </label>
                 </li>
@@ -182,136 +138,31 @@
               "type": "submit",
               "value": "apply"
             })
-          </form>
 
-          <form class="search">
-            <input class="search__input" type="text" placeholder="Поиск.." name="search">
-            @@include('button/index.html',{
-              "text": "Search",
-              "class": "button-search",
-              "type": "submit",
-              "value": "apply"
-            })
+            <label class="search">
+              <input class="search__input" type="text" placeholder="Поиск.." name="search">
+              @@include('button/index.html',{
+                "text": "Search",
+                "class": "button-search",
+                "type": "submit",
+                "value": "search"
+              })
+            </label>
           </form>
         </div>
 
-        <section class="blog container">
+        <section class="card container">
           <h2 class="hidden">Blog</h2>
-          <ul class="blog__list">
-            <li class="blog__item">
-              <picture class="picture">
-                <source 
-                  media="(max-width: 767px)"
-                  srcset="/../../static/images/dog-mobile_1x.jpg?1 1x, /../../static/images/dog-mobile_2x.jpg?1 2x">
-                <source
-                  media="(max-width: 1265px)" 
-                  srcset="/../../static/images/dog-tablet_1x.jpg?1 1x, /../../static/images/dog-tablet_2x.jpg?1 2x" >
-                <img
-                  srcset="/../../static/images/dog_1x.jpg?2 1x, /../../static/images/dog_2x.jpg?1 2x"
-                  src="/../../static/images/dog_1x.jpg?2"
-                  class="blog__img" 
-                  alt="image of dog">
-              </picture>
-
-              <div class ="blog__item-item">
-                <span>20.01.2020</span>
-                <span></span>
-                <span></span>
-                <h3 class="blog__link-title">This is my new dog.</h3> 
-                <p>Duis sit odio dui pretium suspendisse malesuada sit leo in. Massa nec eget etiam tellus ac. Sodales nibh pellentesque donec eu ultrices tortor condimentum massa.</p>
-                <a href="#">Go to this post</a>
-              </div>
-            </li>
-            <li class="blog__item">
-              <picture class="picture">
-                <source 
-                  media="(max-width: 767px)"
-                  srcset="/../../static/images/cocks-mobile_1x.jpg?1 1x, /../../static/images/cocks-mobile_2x.jpg?1 2x">
-                <source
-                  media="(max-width: 1265px)" 
-                  srcset="/../../static/images/cocks-tablet_1x.jpg?1 1x, /../../static/images/cocks-tablet_2x.jpg?1 2x" >
-                <img
-                  srcset="/../../static/images/cocks_1x.jpg?2 1x, /../../static/images/cocks_2x.jpg?1 2x"
-                  src="/../../static/images/cocks_1x.jpg?2"
-                  class="blog__img" 
-                  alt="image of cocks">
-              </picture>
-
-              <div class ="blog__item-item">
-                <h3 class="blog__link-title">Why do roosters scream in the morning?</h3>
-                <p>Erat nunc parturient feugiat egestas adipiscing erat eu. Non neque mi volutpat et lectus.</p>
-                <a href="#">Go to this post</a>
-              </div>
-            </li>
-            <li class="blog__item">
-              <picture class="picture">
-                <source 
-                  media="(max-width: 767px)"
-                  srcset="/../../static/images/kangaroo-mobile_1x.jpg?1 1x, /../../static/images/kangaroo-mobile_2x.jpg?1 2x">
-                <source
-                  media="(max-width: 1265px)" 
-                  srcset="/../../static/images/kangaroo-tablet_1x.jpg?1 1x, /../../static/images/kangaroo-tablet_2x.jpg?1 2x" >
-                <img
-                  srcset="/../../static/images/kangaroo_1x.jpg?2 1x, /../../static/images/kangaroo_2x.jpg?1 2x"
-                  src="/../../static/images/kangaroo_1x.jpg?2"
-                  class="blog__img" 
-                  alt="image of kangaroo">
-              </picture>
-              <div class ="blog__item-item">
-                <h3>Kangaroo. Start.</h3>
-                <p>At leo at nisl tortor egestas. Mauris luctus est luctus massa tellus erat gravida. Eget aenean eget diam habitant risus. Dapibus et, nec platea felis. Facilisi ut leo arcu, semper id pellentesque quisque ultrices etiam. </p>
-                <a href="#">Go to this post</a>
-              </div>
-            </li>
-            <li class="blog__item">
-              <picture class="picture">
-                <source 
-                  media="(max-width: 767px)"
-                  srcset="/../../static/images/chick-mobile_1x.jpg?1 1x, /../../static/images/chick-mobile_2x.jpg?1 2x">
-                <source
-                  media="(max-width: 1265px)" 
-                  srcset="/../../static/images/chick-tablet_1x.jpg?1 1x, /../../static/images/chick-tablet_2x.jpg?1 2x" >
-                <img
-                  srcset="/../../static/images/chick_1x.jpg?2 1x, /../../static/images/chick_2x.jpg?1 2x"
-                  src="/../../static/images/chick_1x.jpg?2"
-                  class="blog__img" 
-                  alt="image of chick">
-              </picture>
-              <div class ="blog__item-item">
-                <h3 class="blog__link-title">Met a duckling at the pond.</h3>
-                <p> Nulla tempus mauris sed vel bibendum. Felis urna suspendisse amet, laoreet sagittis. Semper pellentesque condimentum vitae morbi in dui. Et in et diam massa.</p>
-                <a href="#">Go to this post</a>
-              </div>
-            </li>
-            <li class="blog__item">
-              <picture class="picture">
-                <source 
-                  media="(max-width: 767px)"
-                  srcset="/../../static/images/friend-mobile_1x.jpg?1 1x, /../../static/images/friend-mobile_2x.jpg?1 2x">
-                <source
-                  media="(max-width: 1265px)" 
-                  srcset="/../../static/images/friend-tablet_1x.jpg?1 1x, /../../static/images/friend-tablet_2x.jpg?1 2x" >
-                <img
-                  srcset="/../../static/images/friend_1x.jpg?2 1x, /../../static/images/friend_2x.jpg?1 2x"
-                  src="/../../static/images/friend_1x.jpg?2"
-                  class="blog__img" 
-                  alt="image of friend">
-              </picture>
-              <div class ="blog__item-item">
-                <h3 class="blog__link-title">Can dogs also be friends?</h3>
-                <p>Eu, libero aliquet nibh turpis quis nulla et ullamcorper purus. Consequat egestas sed sagittis morbi lacus. Consectetur et justo, sagittis vitae mi faucibus urna, eu.</p>
-                <a href="#">Go to this post</a>
-              </div>
-            </li>
-          </ul>
+          <ul class="card__list card__list_js"></ul>
         </section>
 
       @@include('link-pages/index.html')
     </main>
     @@include('footer/index.html')
-    <script src="index.js"></script>
-    <!-- <script src="/../../static/js/index.js"></script> -->
+    @@include('loader/index.html')
+    
     <script src="/../../static/images/setting.js"></script>
     <script src="/../../static/images/form.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>

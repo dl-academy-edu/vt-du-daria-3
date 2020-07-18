@@ -15,9 +15,16 @@
   <body>
     @@include('header/index.html')
     <main class="container-back">
-      <div class="profile container">
+      <div class="content container">
         <h1 class="main-title">My profile</h1>
-        <div class="profile__content">
+
+        <div class="menu container menu__mobile_js">
+          <button class="menu__button-mobile"></button>
+          <button class="menu__button-mobile"></button>
+          <button class="menu__button-mobile"></button>
+        </div>    
+
+        <div class="profile">
           <picture>
             <source 
               media="(max-width: 767px)"
@@ -28,40 +35,39 @@
             <img
               srcset="/../../static/images/profile_1x.jpg?2 1x, /../../static/images/profile_2x.jpg?1 2x"
               src="/../../static/images/profile_1x.jpg?2"
-              class="slider__img" 
+              class="profile__image_js" 
               alt="image of profile">
           </picture>
 
           <div class="profile-user">
             <form class="profile-user__form" action="https://form-data-dl.herokuapp.com/api/messages" method="POST">
+              <div class="profile-user__inform">
+                <strong>Name: </strong>
+                <span class="profile-user__name_js"></span>
+              </div>
+              <div class="profile-user__inform">
+                <strong>Surname: </strong>
+                <span class="profile-user__surname_js"></span>
+              </div>
               
               <div class="profile-user__inform">
-                <label class="profile-user__label" for="user-name"> Name:</label>
-                <input class="profile-user__input profile-user__input_js" id="user-name" type="text" name="name" value="Ksenia">
-              </div>
-              <div class="profile-user__inform">
-                <label class="profile-user__label" for="user-surname">Surname:</label>
-                <input class="profile-user__input" id="user-surname" type="text" name="surname" value="Larioshkina">
-              </div>
-              
-              <div class="profile-user__inform">
-                <label class="profile-user__label" for="user-email">Email:</label>
-                <input class="profile-user__input" id="user-email" type="text" name="email" value="larioshkina@gmail.ru">
+                <strong>Email: </strong>
+                <span class="profile-user__email_js"></span>
               </div>
 
               <div class="profile-user__inform">
-                <label class="profile-user__label" for="user-password">Password:</label>
-                <input class="profile-user__input" id="user-password" type="password" name="password" value="***************">
+                <strong>Password: </strong>
+                <span class="profile-user__password_js"></span>
               </div>
 
               <div class="profile-user__inform">
-                <label class="profile-user__label" for="user-location">Location:</label>
-                <input class="profile-user__input" id="user-location" type="text" name="location" value="Moscow">
+                <strong>Location: </strong>
+                <span class="profile-user__location_js"></span>
               </div>
 
               <div class="profile-user__inform">
-                <label class="profile-user__label" for="user-age">Age:</label>
-                <input class="profile-user__input" id="user-age" type="text" name="age" value="17"> 
+                <strong>Age: </strong>
+                <span class="profile-user__age_js"></span>
               </div>
             </form>
             
@@ -87,6 +93,7 @@
             </div>
         </div>
       </div>
+      @@include('loader/index.html')
       <!-- /***Editing password************************************************************************************************/ -->
       <div class="modalEditpsw-bg modalEditpsw-bg_close modalEditpsw-bg_js">
         <form class="modalEditpsw-window" action="https://form-data-dl.herokuapp.com/api/messages" method="POST" name ="modalEditPsw">
@@ -111,35 +118,35 @@
       <!-- /***Editing data************************************************************************************************/ -->
       <div class="modalEditDate-bg modalEditDate-bg_close modalEditDate-bg_js">
         <form class="modalEditDate-window" action="https://form-data-dl.herokuapp.com/api/messages" method="POST" name="modalEditDate">
-          <label class="modalEditDate-window__label" for="user-email">Email</label>
-          <input class="modalEditDate-window__input modalEditDate-window__input_js" id="user-email" type="text" name="email">
+          <label class="modalEditDate-window__label" for="us-email">Email</label>
+          <input class="modalEditDate-window__input modalEditDate-window__input_js" id="us-email" type="text" name="email">
           
           <div class="modalEditDate-window__user">
             <div class="modalEditDate-window__inform">
-              <label class="modalEditDate-window__label" for="user-name">Name</label>
-              <input class="modalEditDate-window__input" id="user-name" type="text" name="user-name">
+              <label class="modalEditDate-window__label" for="us-name">Name</label>
+              <input class="modalEditDate-window__input" id="us-name" type="text" name="user-name">
             </div>
             <div class="modalEditDate-window__inform">
-              <label class="modalEditDate-window__label" for="user-surname">Surname</label>
-              <input class="modalEditDate-window__input" id="user-surname" type="text" name="user-surname">
-            </div>
-          </div>
-    
-          <div class="modalEditDate-window__user">
-            <div class="modalEditDate-window__inform">
-              <label class="modalEditDate-window__label" for="user-loc">Location</label>
-              <input class="modalEditDate-window__input" id="user-loc" type="text" name="location">
-            </div>
-            <div class="modalEditDate-window__inform">
-              <label class="modalEditDate-window__label" for="user-age">Age</label>
-              <input class="modalEditDate-window__input" id="user-age" type="text" name="age">
+              <label class="modalEditDate-window__label" for="us-surname">Surname</label>
+              <input class="modalEditDate-window__input" id="us-surname" type="text" name="user-surname">
             </div>
           </div>
-    
+
           <div class="modalEditDate-window__user">
             <div class="modalEditDate-window__inform">
-              <label class="modalEditDate-window__label" for="user-picture">Profile picture</label>
-              <input class="modalEditDate-window__input file file-1" id="user-picture" type="file" name="profile_picture">
+              <label class="modalEditDate-window__label" for="us-loc">Location</label>
+              <input class="modalEditDate-window__input" id="us-loc" type="text" name="location">
+            </div>
+            <div class="modalEditDate-window__inform">
+              <label class="modalEditDate-window__label" for="us-age">Age</label>
+              <input class="modalEditDate-window__input" id="us-age" type="text" name="age">
+            </div>
+          </div>
+
+          <div class="modalEditDate-window__user">
+            <div class="modalEditDate-window__inform">
+              <label class="modalEditDate-window__label" for="us-picture">Profile picture</label>
+              <input class="modalEditDate-window__input file file-1" id="us-picture" type="file" name="profile_picture">
             </div>
           </div>
           
@@ -159,9 +166,12 @@
         </form>
       </div> 
     </main>
+    <div class="hidden">
+      @@include('footer/index.html')
+    </div>
     <!-- <script src="/../../static/js/index.js"></script> -->
-    <script src="./index.js"></script>
     <script src="/../../static/images/setting.js"></script>
     <script src="/../../static/images/form.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>

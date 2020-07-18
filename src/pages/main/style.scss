@@ -175,7 +175,6 @@
 }
 
 .button-panel {
-
   &__dot {
     width: 10px;
     height: 10px;
@@ -189,18 +188,12 @@
     &:not(:last-child) {
       margin-right: 10px;
     }
-  }
-  &__dot_active {
-    background-color: #000;
-  }
 
+    &_active {
+      background-color: #000;
+    }
+  }
 }
-
-// .button-panel__dot:not(.button-panel__dot_active):hover, 
-// .button-panel__dot:not(.button-panel__dot_active):focus {
-//   background-color: gray;
-// }
-
 
 .about-me {
   overflow: hidden;
@@ -318,7 +311,6 @@
 }
 
 .skills {
-
   &__title {
     margin-top: 62px;
     margin-bottom: 10px;
@@ -480,8 +472,3 @@ div.swiper-button-next {
 div.swiper-wrapper {
   max-height: 452px;
 }
-
-
-// .mobile-header {
-
-// }

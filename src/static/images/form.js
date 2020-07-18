@@ -1,21 +1,20 @@
 console.log("Форма подключилась c images");
 
 function getValuesForm(form) {
-    let body = {};
-    const inputs = form.querySelectorAll("input");
+  let body = {};
+  const inputs = form.querySelectorAll("input");
 
-    let l = inputs.length; 
+  let l = inputs.length; 
 
-    for (let i=0; i < l; i++) {
+  for (let i=0; i < l; i++) {
     const input = inputs[i]; 
-
     switch (input.type) { 
-        case "checkbox":
-        if (input.checked) {
-            body [input.name] = input.value;
-            console.log("Checkbox");
-        }
-        break;
+      case "checkbox":
+      if (input.checked) {
+        body [input.name] = input.value;
+        console.log("Checked");
+      }
+      break;
 
       default:
         body [input.name] = input.value;
@@ -29,14 +28,13 @@ function setInvalidInput (input){
   input.classList.add("is-invalid");
   
   input.addEventListener("input", function handlerInput (event){ 
-
     input.classList.remove("is-invalid"); 
     input.removeEventListener("input", handlerInput);
   });
 }
 
 function mailCheck(email){ 
-    return email.match(/^[0-9a-z\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i);
+  return email.match(/^[0-9a-z\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i);
 }
 
 function errorMessageInputCreate(input, text) {
@@ -58,6 +56,7 @@ function setFormErrors (form, errors) {
 
   for (let i=0; i < l; i++) {
     const input = inputs[i]; 
+    
     switch (input.type) { 
       case "radio":
         if(errors[input.name]){
@@ -67,6 +66,7 @@ function setFormErrors (form, errors) {
       case "checkbox":
         if(errors[input.name]){
             setInvalidInput (input);
+            errorMessageInputCreate(input, errors[input.name]); 
         }
         break;
       case "file":
@@ -90,8 +90,13 @@ function setFormErrors (form, errors) {
 
   formModalSign.addEventListener ("submit", function (event) {
     event.preventDefault();
-    
     const form = event.target;
+
+    let errorsDel = formModalSign.querySelectorAll(".invalid-feedback");
+    for (let i = 0; i < errorsDel.length; i++) {
+      errorsDel[i].remove()
+    }
+
     const values = getValuesForm(form);
     console.log(values);
     
@@ -109,32 +114,36 @@ function setFormErrors (form, errors) {
     setFormErrors (form, errors);
   });
 
-  
 //*Header**Validation form**Register modal***********************************************************/
   let formModalReg = document.forms.modalReg;
 
   formModalReg.addEventListener ("submit", function(event){
     event.preventDefault();
     const form = event.target;
+
+    let errorsDel = formModalReg.querySelectorAll(".invalid-feedback");
+    for (let i = 0; i < errorsDel.length; i++) {
+      errorsDel[i].remove()
+    }
     
     const values = getValuesForm(form);
     console.log(values);
 
     let errors = {};
     if (!mailCheck(values.email)) {
-      errors.email = "Please enter a valid email address(your entry is not in the format «somebody@example.com»";
+      errors.email = "Please enter a valid email address (your entry is not in the format «somebody@example.com»";
     }
 
     if (values.password.length < 3 || values.password.length >= 20){
       errors.password = "This field is required";
     }
 
-    if (values.usName.length < 2){
-      errors.usName = "This field is required";
+    if (values.name.length < 2){
+      errors.name = "This field is required";
     }
 
-    if (values.usSurname.length < 2){
-      errors.usSurname = "This field is required";
+    if (values.surname.length < 2){
+      errors.surname = "This field is required";
     }
 
     if (values.repPassword.length < 2){
@@ -149,6 +158,10 @@ function setFormErrors (form, errors) {
       errors.age = "This field is required";
     }
 
+    if (!values.accept){
+      errors.accept = "This field is required";
+    }
+
     setFormErrors (form, errors);
 });
 
@@ -158,17 +171,23 @@ let formModalSend = document.forms["modal-Send"];
   formModalSend.addEventListener ("submit", function(event){
     event.preventDefault();
     const form = event.target;
-    
+
+    let errorsDel = formModalSend.querySelectorAll(".invalid-feedback");
+    for (let i = 0; i < errorsDel.length; i++) {
+      errorsDel[i].remove()
+    }
+
     const values = getValuesForm(form);
     console.log(values);
     
     let errors = {};
+
     if (!mailCheck(values.email)) {
       errors.email = "Please enter a valid email address(your entry is not in the format «somebody@example.com»";
     }
 
-    if (values.usName.length < 2){
-      errors.usName = "This field is required";
+    if (values.name.length < 2){
+      errors.name = "This field is required";
     }
 
     if (values.messageSubject.length < 2){
@@ -179,7 +198,12 @@ let formModalSend = document.forms["modal-Send"];
       errors.phone = "This field is required";
     }
 
+    if (!values.accept){
+      errors.accept = "This field is required";
+    }
+
     setFormErrors (form, errors);
   });
 
 })();
+

@@ -2,7 +2,7 @@
 @import "consts";
 
 body { 
-  font-family: 'Gilroy';
+  font-family: $primary-font;
   font-style: normal;
   font-weight: normal;
   margin: 0;
@@ -68,7 +68,7 @@ img {
   padding-bottom: 4px;
   margin-bottom: 0;
   
-  font-family: 'Gilroy', sans-serif;
+  font-family: $primary-font;
   font-style: normal;
   font-weight: bold;
   font-size: 47px;
@@ -157,8 +157,8 @@ img {
     padding: 17px 20px;
     margin-bottom: 20px;
     outline: none;
-    font-family: 'Gilroy', sans-serif;
-    // font-family: $primary-font;
+    //font-family: 'Gilroy', sans-serif;
+    font-family: $primary-font;
     border: 2.5px solid #E5E5E5;
     transition: $transition-duration;
 
@@ -302,6 +302,7 @@ fieldset {
 }
 
 //connecting components
+@import "./loader/loader";
 @import "./button/button";
 @import "./header/header";
 @import "./link-button/link-button";
@@ -309,3 +310,4 @@ fieldset {
 @import "./footer/footer";
 @import "./footer/footer";
 @import "./button-fixed/button-fixed";
+

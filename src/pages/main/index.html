@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="/static/images/favicon.ico">
     <link rel="stylesheet" href="/../common.css">
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <title>Antonina's blog</title>
   </head>
 
@@ -21,6 +21,7 @@
         <div class="content__content"> 
           <h1 class="main-title">Antonina Antoninovna</h1>
           <p class="content__text">Future front-end developer 23 years old, Tolyatti</p>
+          
           <div class="menu container menu__mobile_js">
             <button class="menu__button-mobile"></button>
             <button class="menu__button-mobile"></button>
@@ -257,12 +258,12 @@
             The site is responsive and cross-browser, but without adding interactivity via JavaScript.</span>
           </div>
         </div>
-      
       </section>
-      @@include('button-fixed/index.html')
+      @@include('button-fixed/index.html')  
     </main>
     @@include('footer/index.html')
-    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+    @@include('loader/index.html')
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="/../../static/images/setting.js"></script>
     <script src="/../../static/images/form.js"></script>
     <script src="index.js"></script> 

@@ -1,10 +1,45 @@
 console.log("setting.js подключился");
 
-/***Sign in***************************************************************************/
-var modalSignIn = document.querySelector(".modalSign-bg_js");
-var buttonOpenSignIn = document.querySelector(".sign_js");
-var buttonCloseSignIn = document.querySelector(".modalSign-window__close_js");
-var input1 = document.querySelector(".modalSign-window__input_js");
+let basePath = "https://academy.directlinedev.com";
+//***fech*************************************************/
+function sendReq({url, method="GET", body={}, headers={}}){
+  let settings = { //объект и передадим методы (параметры)
+    //в ключик метод положи переменную метод
+    method,
+    body,
+    headers,
+  };
+
+  // if (method === "GET") {
+  //   settings.body = undefined;
+  // }
+  return fetch (basePath + url, settings);
+}
+
+const loaderBox = document.querySelector(".loader-container_js");
+
+function createLoader() {
+  return`<div class='sk-fading-circle'>
+  <div class='sk-circle sk-circle-1'></div>
+  <div class='sk-circle sk-circle-2'></div>
+  <div class='sk-circle sk-circle-3'></div>
+  <div class='sk-circle sk-circle-4'></div>
+  <div class='sk-circle sk-circle-5'></div>
+  <div class='sk-circle sk-circle-6'></div>
+  <div class='sk-circle sk-circle-7'></div>
+  <div class='sk-circle sk-circle-8'></div>
+  <div class='sk-circle sk-circle-9'></div>
+  <div class='sk-circle sk-circle-10'></div>
+  <div class='sk-circle sk-circle-11'></div>
+  <div class='sk-circle sk-circle-12'></div>
+  </div>`
+}
+
+/*header**Sign in modal***************************************************************************/
+let modalSignIn = document.querySelector(".modalSign-bg_js");
+let buttonOpenSignIn = document.querySelector(".sign_js");
+let buttonCloseSignIn = document.querySelector(".modalSign-window__close_js");
+let input1 = document.querySelector(".modalSign-window__input_js");
 
 function modalAdd(){
   modalSignIn.classList.remove("modalSign-bg_close");
@@ -27,11 +62,58 @@ window.addEventListener("keydown", function (event) {
   }
 });
 
-/***Register**************************************************************************/
-var modalReg = document.querySelector(".modalReg-bg_js");
-var buttonOpenReg = document.querySelector(".register_js");
-var buttonCloseReg = document.querySelector(".modalReg-window__close_js");
-var input2 = document.querySelector(".modalReg-window__input_js");
+function closeModalSignInAfterLogin(){
+  let timerId = setInterval (function() {
+    modalRem();
+  }, 1000)
+}
+
+//**send form Sign in modal**/
+function SignInReg(event) {
+  event.preventDefault();
+  loaderBox.innerHTML = createLoader();
+  let values =  getAllValuesFromForm(event.target);
+  console.log("Sign in modal", values); //мы получили нашу форму теперь надо ее  оправлять
+ // воспользуемся sendReqwest
+  sendReq({
+    url: "/api/users/login", 
+    method: "POST", 
+    body: JSON.stringify(values),
+    headers:{
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+  })
+  .then(function(response) {
+    return response.json();//обязательно
+  })
+  .then(function (json){ //в случае успеха
+    if (json.success) {
+      let data = json.data;
+      loaderBox.innerHTML = "";
+      alert (`Пользователь c id ${data.userId} успешно аутентифицирован!`);
+      localStorage.setItem("userId", data.userId);
+      console.log("data.userId", data);
+      closeModalSignInAfterLogin();
+      updateToken(data.token); //запускаем функцию и принимать на входе token
+    } else {
+      throw json.errors
+    }
+  })
+  .catch (function (errors) {
+    loaderBox.innerHTML = "";
+    setFormErrors(event.target, errors);
+  });
+}
+
+modalSignIn.addEventListener("submit", function (event) {
+  SignInReg(event);
+});
+
+/*header**Register modal**************************************************************************/
+let modalReg = document.querySelector(".modalReg-bg_js");
+let buttonOpenReg = document.querySelector(".register_js");
+let buttonCloseReg = document.querySelector(".modalReg-window__close_js");
+let input2 = document.querySelector(".modalReg-window__input_js");
 
 buttonOpenReg.addEventListener("click", function(){
     modalReg.classList.remove("modalReg-bg_close");
@@ -50,7 +132,45 @@ window.addEventListener("keydown", function (event) {
   }
 });
 
-/***Send message**************************************************************************/
+//**send form Register modal**/
+function modalRegReg(event) {
+  event.preventDefault();
+  loaderBox.innerHTML = createLoader();
+  let values =  getAllValuesFromForm(event.target);
+  console.log("Sign in modal", values); //мы получили нашу форму теперь надо ее  оправлять
+ // воспользуемся sendReqwest - сенд реквестом
+  sendReq({
+    url: "/api/users", 
+    method: "POST", 
+    body: JSON.stringify(values),
+    headers:{
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+  })
+  .then(function(response) {
+    console.log(response);
+    return response.json();//обязательно
+  })
+  .then(function(json){
+    if(json.success){
+      let user = json.data;
+      loaderBox.innerHTML = "";
+      alert (`Пользователь ${user.name} ${user.surname}`);
+    } else {
+      throw json.errors
+    }
+  })
+  .catch (function (errors) {
+    loaderBox.innerHTML = "";
+    setFormErrors(event.target, errors)
+  });
+}
+
+modalReg.addEventListener("submit", function (event) {
+  modalRegReg(event);
+});
+
+/*footer**Send message modal***********************************************************************/
 var modal = document.querySelector(".modal-bg_js");
 var buttonOpen = document.querySelector(".footer__link_js");
 var buttonClose = document.querySelector(".modal-window__close_js");
@@ -73,6 +193,47 @@ window.addEventListener("keydown", function (event) {
   }
 });
 
+//**send form Send message modal**/
+function SendMessage(event) {
+  event.preventDefault();
+  loaderBox.innerHTML = createLoader();
+  let values =  getAllValuesFromForm(event.target);
+  let messageValues = {};
+  messageValues.to = values.email;
+  messageValues.body = JSON.stringify(values);
+  console.log("Sign in modal", values);
+  
+  sendReq({
+    url: "/api/emails", 
+    method: "POST", 
+    body: JSON.stringify(messageValues),
+    headers:{
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+  })
+
+  .then(function(response) {
+    return response.json();//обязательно
+  })
+  .then(function(json){
+    if(json.success){
+      let user = json.data;
+      loaderBox.innerHTML = "";
+      alert (`Пользователь ${user.name}, ${user.surname}`);
+    } else {
+      throw json.errors
+    }
+  })
+  .catch (function (error) {
+    loaderBox.innerHTML = "";
+    alert(`${JSON.stringify(error, null, 2)}`)
+  });
+}
+
+modal.addEventListener("submit", function (event) {
+  SendMessage(event);
+});
+
 var buttonMobileHeader = document.querySelector(".menu__mobile_js");
 var buttonCloseMobileHeader = document.querySelector(".mobile-header__close_js");
 var mobileHeader = document.querySelector(".mobile-header");
@@ -87,50 +248,61 @@ buttonCloseMobileHeader.addEventListener("click", function(){
   mobileHeader.classList.remove("mobile-header_open");
 });
 
-//***button-fixed********************************************************************************/
-(function(){
+//Общая на все формы
+function getAllValuesFromForm(form, type) {
+  if (type === "formData"){
+    return new FormData(form);
+  }
+  let body = {}; 
+  const inputs = form.querySelectorAll("input");
+  const texareas = form.querySelectorAll("textarea");
+  for (let input of inputs) {
+    switch (input.type) { 
+      case "radio":
+        if (input.checked)
+          body[input.name] = input.value
+        break;
 
-  let btnFix = document.querySelector(".btn-fixed_js");
-  let timer;
-  let scrolled;
+      case "checkbox":
+        if (!body[input.name])
+            body[input.name] = [];
+        if (input.checked)
+          body[input.name].push(input.value);
+        break;
 
-	window.addEventListener('scroll', function(event){
-		if (window.pageYOffset > 1500){
-      btnFix.classList.remove("btn-fixed_hidden");
-		}
-		else if (window.pageYOffset < 1500) {
-      btnFix.classList.add("btn-fixed_hidden");
-		}
-  });
+      case "file":
+        body[input.name] = input.files;
+        break;
 
-  btnFix.addEventListener("click", function(){
-    scrolled = window.pageYOffset;
-    scrollUp();
-  });
-  
-  function scrollUp(){
-    if (scrolled > 0) {
-      window.scrollTo(0, scrolled);
-      scrolled = scrolled - 50;
-      timer = setTimeout(scrollUp, 5);
+      default:
+        body[input.name] = input.value;
     }
-    else {
-      clearTimeout(timer);
-      window.scrollTo(0, 0);
-    }
+  }
+  for (let textarea of texareas) {
+    body[textarea.name] = textarea.value;
+  }
+  return body;
+}
+
+(function checkToken() {
+  const token = localStorage.getItem("token");
+  if (token) {
+    document.querySelector(".sign_js").classList.add("hidden");
+    document.querySelector(".register_js").classList.add("hidden");
+    document.querySelector(".profile_js").classList.remove("hidden");
+  } else {
+    document.querySelector(".sign_js").classList.remove("hidden");
+    document.querySelector(".register_js").classList.remove("hidden");
+    document.querySelector(".profile_js").classList.add("hidden");
   }
 })();
 
-//**************************************/
-function btnFixLeft(){
-  let WW_width = document.documentElement.clientWidth; 
-  console.log("ширина", WW_width);
-  let btnFix = document.querySelector(".btn-fixed_js");
-  console.log(btnFix);
-  
-  if (WW_width < 1400) {
-    btnFix.style.left = (WW_width-100) + "px";
+function updateToken (token){ 
+  if (token) {
+    localStorage.setItem ("token", token);
+    console.log("Выполнилось");
+  } else {
+    localStorage.removeItem("token");
   }
+  checkToken();
 }
-btnFixLeft();
-

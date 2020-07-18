@@ -158,12 +158,10 @@
 
   &__lable {
     @extend .modal-window__lable;
-
       > input:hover ~ span,
       > input:focus ~ span {
         color: #473c3c;
         cursor: pointer;
-        
     }
 
     > input:checked ~ span {
@@ -181,7 +179,7 @@
   }
 
   &__accept:focus + &__click,
-  &__accept:hover + &__click,
+  &__accept:hover + &__click, 
   &__accept:checked + &__click {
     border: 2px solid #828282;
   }
@@ -257,7 +255,6 @@
   }
 }
 
-
 /*********************************************************/
 .mobile-header {
   z-index: 1;
@@ -311,12 +308,12 @@
   &__close {
     position: absolute;
     top: 5px;
-    left: 49%;
-    width: 15px;
-    height: 15px;
+    left: 94%;
+    width: 20px;
+    height: 20px;
     border: none;
     cursor: pointer;
-    background-color: #FFFFFF;
+    background-color: initial;
     transition: $transition-duration;
 
     &::before, &::after {
@@ -325,8 +322,8 @@
       top: 0;
       transform: rotate(45deg);
       height: 100%;
-      width: 1px;
-      background-color: black;
+      width: 2px;
+      background-color: #070707;
       border-radius: 5px;
     }
 
@@ -368,11 +365,12 @@
     margin-bottom: 20px;
     font-size: $fs-primary;
     line-height: 22px;
-    color: $color_text-header;
+    font-weight: bold;
+    color: #828282;
     transition: $transition-duration;
 
-    &:hover {
-      opacity: 0.5;
+    &:hover, &:active, &:focus {
+      color: #070707;
     }
   }
   
@@ -383,5 +381,9 @@
     margin-top: 15px;
     color: $color_text-header;
     font-weight: bold;
+  }
+
+  &__nav {
+    margin-top: 80px;
   }
 }

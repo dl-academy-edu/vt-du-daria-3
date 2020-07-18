@@ -1,31 +1,28 @@
 @import "../../components/consts";
 
-.profile {
+.content {
   padding-top: 1px;
   padding-bottom: 73px;
+}
 
-  &__content {
-    margin-top: 19px;
-    display:flex;
-  }
+.profile {
+  margin-top: 19px;
+  display:flex;
+
   picture {
     margin-left: -20px;
   }
-}
+  &-user {
+    margin-left: 8.5%;
+    margin-top: 3%;
 
-.profile-user {
-  margin-left: 8.5%;
-  margin-top: 3%;
-
-  &__form {
-    margin-bottom: 33px;
-  }
-
-  &__inform {
-    padding-bottom: 18px;
-  }
-  &__input {
-    border: none;
+    &__form {
+      margin-bottom: 33px;
+    }
+  
+    &__inform {
+      padding-bottom: 18px;
+    }
   }
 }
 
