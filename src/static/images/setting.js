@@ -3,16 +3,16 @@ console.log("setting.js подключился");
 let basePath = "https://academy.directlinedev.com";
 //***fech*************************************************/
 function sendReq({url, method="GET", body={}, headers={}}){
-  let settings = { //объект и передадим методы (параметры)
-    //в ключик метод положи переменную метод
+  let settings = {
+    
     method,
     body,
     headers,
   };
 
-  // if (method === "GET") {
-  //   settings.body = undefined;
-  // }
+  if (method === "GET") {
+    settings.body = undefined;
+  }
   return fetch (basePath + url, settings);
 }
 
@@ -62,9 +62,10 @@ window.addEventListener("keydown", function (event) {
   }
 });
 
-function closeModalSignInAfterLogin(){
+function closeModal(){
   let timerId = setInterval (function() {
     modalRem();
+    modalRegRem();
   }, 1000)
 }
 
@@ -93,15 +94,18 @@ function SignInReg(event) {
       alert (`Пользователь c id ${data.userId} успешно аутентифицирован!`);
       localStorage.setItem("userId", data.userId);
       console.log("data.userId", data);
-      closeModalSignInAfterLogin();
+      closeModal();
       updateToken(data.token); //запускаем функцию и принимать на входе token
+      //window.location.reload();
     } else {
       throw json.errors
     }
   })
   .catch (function (errors) {
     loaderBox.innerHTML = "";
-    setFormErrors(event.target, errors);
+    alert (`К сожалению Вы не зарегестрированы! Пожалуйста зарегистрируйтесь!`);
+    closeModal();
+    window.location.reload();
   });
 }
 
@@ -114,23 +118,26 @@ let modalReg = document.querySelector(".modalReg-bg_js");
 let buttonOpenReg = document.querySelector(".register_js");
 let buttonCloseReg = document.querySelector(".modalReg-window__close_js");
 let input2 = document.querySelector(".modalReg-window__input_js");
-
-buttonOpenReg.addEventListener("click", function(){
-    modalReg.classList.remove("modalReg-bg_close");
-    input2.focus();
-});
-
-buttonCloseReg.addEventListener("click",function(){
+  
+function modalRegAdd(){
+  modalReg.classList.remove("modalReg-bg_close");
+  input2.focus();
+}
+function modalRegRem(){
   modalReg.classList.add("modalReg-bg_close");
   buttonOpenReg.focus();
-});
-  
+}
+
+buttonOpenReg.addEventListener("click", modalRegAdd);
+buttonCloseReg.addEventListener("click", modalRegRem);
+
 window.addEventListener("keydown", function (event) {
   if(!modalReg.classList.contains("modalReg-bg_close") && event.code==="Escape"){
     modalReg.classList.add("modalReg-bg_close");
     buttonOpenReg.focus();
   }
 });
+
 
 //**send form Register modal**/
 function modalRegReg(event) {
@@ -155,7 +162,9 @@ function modalRegReg(event) {
     if(json.success){
       let user = json.data;
       loaderBox.innerHTML = "";
-      alert (`Пользователь ${user.name} ${user.surname}`);
+      alert (`Пользователь ${user.name} ${user.surname} успешно зарегистрирован!`);
+      closeModal();
+      window.location.reload();
     } else {
       throw json.errors
     }
@@ -211,9 +220,8 @@ function SendMessage(event) {
       'Content-Type': 'application/json;charset=utf-8',
     },
   })
-
   .then(function(response) {
-    return response.json();//обязательно
+    return response.json();
   })
   .then(function(json){
     if(json.success){
@@ -248,6 +256,7 @@ buttonCloseMobileHeader.addEventListener("click", function(){
   mobileHeader.classList.remove("mobile-header_open");
 });
 
+//******************************************************************************* */
 //Общая на все формы
 function getAllValuesFromForm(form, type) {
   if (type === "formData"){
@@ -291,11 +300,15 @@ function getAllValuesFromForm(form, type) {
     document.querySelector(".register_js").classList.add("hidden");
     document.querySelector(".profile_js").classList.remove("hidden");
   } else {
+    if(window.location.pathname === "/pages/my-profile/index.html"){
+      window.location.pathname = "/"
+    }
     document.querySelector(".sign_js").classList.remove("hidden");
     document.querySelector(".register_js").classList.remove("hidden");
     document.querySelector(".profile_js").classList.add("hidden");
   }
 })();
+
 
 function updateToken (token){ 
   if (token) {
@@ -306,3 +319,4 @@ function updateToken (token){
   }
   checkToken();
 }
+

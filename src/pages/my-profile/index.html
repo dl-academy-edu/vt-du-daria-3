@@ -25,7 +25,8 @@
         </div>    
 
         <div class="profile">
-          <picture>
+          <div class="profile__image profile__image_js"></div>
+          <!-- <picture>
             <source 
               media="(max-width: 767px)"
               srcset="/../../static/images/profile-mobile_1x.jpg?1 1x, /../../static/images/profile-mobile_2x.jpg?1 2x">
@@ -37,7 +38,7 @@
               src="/../../static/images/profile_1x.jpg?2"
               class="profile__image_js" 
               alt="image of profile">
-          </picture>
+          </picture> -->
 
           <div class="profile-user">
             <form class="profile-user__form" action="https://form-data-dl.herokuapp.com/api/messages" method="POST">
@@ -56,7 +57,7 @@
               </div>
 
               <div class="profile-user__inform">
-                <strong>Password: </strong>
+                <strong>Password: **********</strong>
                 <span class="profile-user__password_js"></span>
               </div>
 
@@ -104,7 +105,7 @@
           <input class="modalEditpsw-window__input" id="newPsw" type="password" name="newPassword">
 
           <label class="modalEditpsw-window__label" for="repeatNewPsw">Repeat new password <span class="fildImportant">*</span></label>
-          <input class="modalEditpsw-window__input" id="repeatNewPsw" type="password" name="repNewPassword">
+          <input class="modalEditpsw-window__input" id="repeatNewPsw" type="password" name="RepNewPassword">
           
           @@include('button/index.html',{
             "text": "Change password",
@@ -124,11 +125,11 @@
           <div class="modalEditDate-window__user">
             <div class="modalEditDate-window__inform">
               <label class="modalEditDate-window__label" for="us-name">Name</label>
-              <input class="modalEditDate-window__input" id="us-name" type="text" name="user-name">
+              <input class="modalEditDate-window__input" id="us-name" type="text" name="name">
             </div>
             <div class="modalEditDate-window__inform">
               <label class="modalEditDate-window__label" for="us-surname">Surname</label>
-              <input class="modalEditDate-window__input" id="us-surname" type="text" name="user-surname">
+              <input class="modalEditDate-window__input" id="us-surname" type="text" name="surname">
             </div>
           </div>
 
@@ -146,7 +147,7 @@
           <div class="modalEditDate-window__user">
             <div class="modalEditDate-window__inform">
               <label class="modalEditDate-window__label" for="us-picture">Profile picture</label>
-              <input class="modalEditDate-window__input file file-1" id="us-picture" type="file" name="profile_picture">
+              <input class="modalEditDate-window__input file file-1" id="us-picture" type="file" name="avatar">
             </div>
           </div>
           

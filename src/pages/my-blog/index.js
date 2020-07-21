@@ -4,6 +4,8 @@ const SERVER_URL = "https://academy.directlinedev.com";
 (function(){
   let tagsBox = document.querySelector(".tag__list_js");
   let blogsBox = document.querySelector(".card__list_js");
+  let limit = 2;
+  let allValuesPage = getValuesFromUrl();
 
   function call (method, path, fn, onerror) {
     let xhr = new XMLHttpRequest();
@@ -25,7 +27,7 @@ const SERVER_URL = "https://academy.directlinedev.com";
         <input class="input hidden" type="checkbox" name="${tag.name}" value="${tag.id}">
         <span class="tag__click" style="border:2.5px solid ${tag.color}">
         <svg class="tag__click_active" width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 6.75L5.91301 12.77C6.20128 13.2135 6.85836 13.1893 7.11327 12.7259L13.425 1.25" stroke=" ${tag.color}" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M2 6.75L5.91301 12.77C6.20128 13.2135 6.85836 13.1893 7.11327 12.7259L13.425 1.25" stroke="${tag.color}" stroke-width="2.5" stroke-linecap="round"/>
           </svg>
         </span>
       </label>
@@ -45,7 +47,7 @@ const SERVER_URL = "https://academy.directlinedev.com";
     }
   });
 
-  function createCard(card, tag) { //функция принимабщая на вход объект в нашем случае это будет tag(пришел с сервера)
+  function createCard(card) {
     let date = new Date(card.date);
 
     const year = date.getFullYear();
@@ -71,7 +73,6 @@ const SERVER_URL = "https://academy.directlinedev.com";
                     border-radius: 4px;
                     width: 25px;"></span>
           </div>
-          <span class="card__tag card__tag_${card.tags.id}"></span>
           <span>${dateServer}</span>
           <span>${card.views} views</span>
           <span>${card.commentsCount} comments</span>
@@ -83,20 +84,27 @@ const SERVER_URL = "https://academy.directlinedev.com";
     </li>`
   }
 
- //Для карточек (пост)
-  call("GET", "/api/posts", function (res) {
-    let response = JSON.parse(res.response);
-    if (response.success) {
-      const cards = response.data;
-      let cardsHTML = "";//строка в которую поместим все наши карточки которую создали с помощью функции createCard(card)
-      for(let i=0; i< cards.length; i++) {
-        cardsHTML += createCard(cards[i]); //добавляем к нашей строке карточки
+  
+  getCards(allValuesPage);
+
+  function getCards(allValuesPage){
+    //Для карточек (пост)
+    const page = allValuesPage.page ? +allValuesPage.page : 1;
+    const offset = (page-1)*limit;
+    call("GET", `/api/posts?limit=${limit}&offset=${offset}`, function (res) {
+      let response = JSON.parse(res.response);
+      if (response.success) {
+        const cards = response.data;
+        let cardsHTML = "";
+        for(let i=0; i< cards.length; i++) {
+          cardsHTML += createCard(cards[i]);
+        }
+        blogsBox.innerHTML = cardsHTML;
+      } else {
+        alert("Ошибка в карточках");
       }
-      blogsBox.innerHTML = cardsHTML;
-    } else {
-      alert("Ошибка в карточках");
-    }
-  })
+    })
+  }
 
   function getAllValuesFromForm(form) {
     let body = {};
@@ -132,9 +140,12 @@ const SERVER_URL = "https://academy.directlinedev.com";
     return body;
   }
 
+  const filterForm = document.forms.filterForm;
+
   function setAllValuesForForm(form, values) {
     const inputs = form.querySelectorAll("input");
     const texareas = form.querySelectorAll("textarea"); 
+
     for (let i = 0; i < inputs.length; i++) {
       let input = inputs[i];
       switch (input.type) { 
@@ -153,7 +164,7 @@ const SERVER_URL = "https://academy.directlinedev.com";
                 }
               }
             } else {
-              if(values[input.name] === input.value) {
+              if(values[input.name] && values[input.name] === input.value) {
                 input.checked = true;
               }
             }
@@ -174,16 +185,14 @@ const SERVER_URL = "https://academy.directlinedev.com";
     if (window.location.search){
       let paramsArray = window.location.search.substring(1).split("&");
       for (let i=0; i < paramsArray.length; i++){
+        console.log(paramsArray[i], i);
         let split = paramsArray[i].split("=");
-        let name = split[0];
-
-        //let value = split[1];
-        //replace() - метод строки (заменяет первое что найдет в строке) (найди %20 /замени " "), но если поставить регулярное выражение (/%20/g - global) то будет заменять все что найдет 
-        let value = split[1].replace (/%20/g, " ");
+        let name = split[0].replace(/%20/, " ");//?????????????????????
+        let value = split[1].replace(/%20/g, " ");
 
         if (params[name]){
           if(typeof params[name] === "string") {
-            params[name] = [params[name], value];
+            params[name] = [params[value,name], value];
           } else {
             params[name].push(value);
           }
@@ -211,42 +220,44 @@ const SERVER_URL = "https://academy.directlinedev.com";
     window.history.replaceState({}, document.title, "?" + params.join("&"));
   }
   
-  const filterForm = document.forms.filterForm;
-
   setAllValuesForForm(filterForm, getValuesFromUrl());
 
   filterForm.addEventListener("submit", function (event) {
     event.preventDefault();
     console.log(getAllValuesFromForm(event.target)); 
-    setValuesToUrl(getAllValuesFromForm(event.target));
-  });
+    //setValuesToUrl(getAllValuesFromForm(event.target));
+    setValuesToUrl(value);
+    allValuesPage = value;
+    document.querySelector(".result_js").innerHTML = JSON.stringify(allValuesPage, null, 2);
+  })
 
 
   //****Pages************************************************************************/
   let pages = document.querySelectorAll(".pages__link");
-
-  let activePage = 0;
+  let activePage = index;
 
   function setActivePage(index) {
     pages[activePage].classList.remove("pages__link_active");
     pages[index].classList.add("pages__link_active");
-    activePage = index;
+    //activePage = index;
     localStorage.setItem("activePage", activePage + 1);
   }
 
   function init(){
     for(let i = 0; i < pages.length; i++){
-
       if (i === activePage){
         pages[i].classList.add ("pages__link_active");
       }
-
       pages[i].addEventListener("click", function() {
         setActivePage(i);
       });
     }
   }
   init();
+
+  function createPagination(){
+
+  }
 
   let links = document.querySelectorAll(".link_js");
   for (let i=0; i < links.length; i++){
@@ -255,9 +266,15 @@ const SERVER_URL = "https://academy.directlinedev.com";
 
       let value = getAllValuesFromForm(filterForm);
       value.page =  i + 1 + "";
-      console.log(value);
+      console.log("значение", value);
       setValuesToUrl(value);
-      //window.history.replaceState({}, document.title, "?page=" +(i+1));
+      allValuesPage = value;
+      document.querySelector(".result_js").innerHTML = JSON.stringify(allValuesPage, null, 2);
+      getCards(allValuesPage);
     })
   }
+
+  let buttonPrev = document.querySelector(".pages__prev_js");
+  let buttonNext = document.querySelector(".pages__next_js");
+
 })();

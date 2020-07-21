@@ -133,41 +133,13 @@
 
   &::before {
     margin-top: -37%;
-    // margin-left: -1%;
     transform: rotate(-45deg);
-
-    // @media (max-width: 450px) {
-    //   margin-top: 6.3%;
-    // }
   }
 }
 
 .slide-container {
   position: relative;//
 }
-
-// .slide-prev {
-//   border-radius: initial;
-//   border: none;
-//   background-color: initial;
-//   padding-left: 0;
-//   position: absolute;
-//   top: 44.5%;
-//   zoom: 1.5;
-
-//   &:hover, &:focus {
-//     border: none;
-//     color: #828282;
-//   }
-// }
-
-// .slide-prev {
-//   // left: 3%;
-// }
-
-// .slide-next{
-//   left: 92%;
-// }
 
 .button-next {
   @extend .button-prev;
