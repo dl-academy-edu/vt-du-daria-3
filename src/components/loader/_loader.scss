@@ -1,6 +1,6 @@
 .sk-fading-circle {
-  width: 4em;
-  height: 4em;
+  width: 8em;
+  height: 8em;
   position: fixed;
   margin: auto;
   top:0;
@@ -22,8 +22,8 @@
   content: "";
   display: block;
   margin: 0 auto;
-  width: 15%;
-  height: 15%;
+  width: 10%;
+  height: 25%;
   background-color: #337ab7;
   border-radius: 100%;
   -webkit-animation: sk-fading-circle-delay 1.2s infinite ease-in-out both;

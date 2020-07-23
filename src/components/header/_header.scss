@@ -126,6 +126,9 @@
 
 .modalSign-window__close {
   @extend .modal-window__close;
+  @media (max-width: 450px) {
+    margin: -45px 105% 20px 0%;
+  }
 }
 
 .modalReg-bg {
@@ -172,7 +175,6 @@
 
   &__click {
     @extend .modal-window__click;
-   
     &:hover, &:focus {
       border: 2.5px solid #828282;
     }
@@ -198,7 +200,7 @@
 
   &__text {
     @extend .modal-window__text;
-    &:hover, &:focus {
+    &:hover, &:active, &:focus {
       color: #828282;
     }
     &:checked {
@@ -224,17 +226,23 @@
       color: #070707;
       border: 2.5px solid #070707;
     }
-
   }
-}
 
-.modalReg-window__close {
-  @extend .modal-window__close;
+  &__close {
+    @extend .modal-window__close;
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      cursor: pointer;
+      margin: -45px 102% 20px 0%;
+      order: 2;
+    }
+  }
 }
 
 .menu {
   display: none;
-
   @media (max-width: 375px) {
     display: flex;
     flex-direction: column;
@@ -247,8 +255,6 @@
   &__button-mobile {
     width: 31px;
     margin-top: 5px;
-    //padding-top: 2px;
-    //padding-bottom: 1px;
     background-color: #070707;
     border: 1px solid;
     border-radius: 15px;
@@ -282,8 +288,6 @@
   &__content {
     background-color:#FFFFFF;
     background: rgba(246, 246, 246, 0.99);
-    //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.13);
-    //min-height: 400px;
     padding: 25px 8%;
   }
 
@@ -377,7 +381,6 @@
   &__contact {
     display: block;
     text-align: center;
-    // width: 320px;
     margin-top: 15px;
     color: $color_text-header;
     font-weight: bold;

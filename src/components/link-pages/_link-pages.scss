@@ -2,7 +2,6 @@
 
 .pages {
   display: flex;
-  // flex-wrap: wrap;
   padding-bottom: 43px; 
   align-items: center;
 
@@ -16,10 +15,9 @@
     margin: auto;
     padding-left: 0;
     justify-content: space-between;
-    // font-family: $secondary-font;
     font-style: normal;
     font-weight: bold;
-    // font-size: $fs-primary;
+    font-size: $fs-primary;
     line-height: 20px;
     color: #1E0606;
 
@@ -32,38 +30,13 @@
 
   &__link {
     color: #E5E5E5;
-    // transition: $transition-duration;
+    transition: $transition-duration;
 
     &:hover, &:focus, &:active, &:checked {
       color: #1E0606;
     }
+    &_active {
+      color: #1E0606;
+    }
   }
-  
-  &__link_active {
-    color: #1E0606;
-  }
-}
-
-.prev {
-  padding-left: 20px;
-  width: 18px;
-  height: 18px;
-  background-color: transparent;
-  border: none;
-  fill:#E4E1E1;
-  border-radius: 5px;
-
-  &:hover {
-    transition: $transition-duration;
-    opacity: 0.5;
-  }
-
-  &:active {
-    transition: $transition-duration;
-    opacity: 0.5;
-  }
-}
-
-.next {
-  @extend .prev;
 }

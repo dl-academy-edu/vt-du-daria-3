@@ -166,6 +166,10 @@
     cursor: pointer;
     transition: $transition-duration;
 
+    @media (max-width: 465px) {
+      margin: -45px 105% 20px 0%;
+    }
+
     &::before, &::after {
       content: "";
       position: absolute;
@@ -173,7 +177,7 @@
       transform: rotate(45deg);
       height: 114%;
       width: 3px;
-      background-color: #070707;
+      background-color: #828282;
       border-radius: 5px;
     }
 
@@ -181,13 +185,14 @@
       transform: rotate(-45deg);
     }
 
-    &:hover {
-      opacity: 0.5;
+    &:hover::before, &:hover::after {
+      background-color: #070707;
     }
 
     &:active {
       opacity: 0.3;
     }
+
   }
 }
 
@@ -242,6 +247,11 @@
 
   &__close {
     @extend .modalEditpsw-window__close;
+    @media (max-width: 768px) {
+      margin: -45px 102% 20px 0;
+    }
+
+
   }
 }
 

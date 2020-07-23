@@ -45,6 +45,13 @@
       background-color: #FFFFFF;
       color: #070707;
     }
+
+    &:disabled {
+      background-color: #c1c1c1;
+      border: solid #c1c1c1;
+      color: #e1e1e1;
+      cursor: initial;
+    }
   }
 }
 
@@ -121,7 +128,6 @@
       border-bottom: 1px solid #070707;
     }
   }
-
 }
 
 .copyr {

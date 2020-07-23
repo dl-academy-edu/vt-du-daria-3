@@ -131,7 +131,7 @@ window.addEventListener("keydown", function (event) {
     setFormErrors (form, errors);
   });
 
-  //*Validation form Other data**************************************************************************/
+  //*Validation form Other data**************************************************************/
   let formModalEditDate = document.forms.modalEditDate;
 
   formModalEditDate.addEventListener ("submit", function (event) {
@@ -143,7 +143,7 @@ window.addEventListener("keydown", function (event) {
   });
 })();
 
-//*********************************************************************************************** */
+//***********************************************************************************************/
 function closeModalmodalEdit(){
   let timerId = setInterval (function() {
     modalEditRem();
@@ -170,7 +170,6 @@ function updateUserData(){
   })
   .catch(function (error) {
     loaderBox.innerHTML = "";
-    alert("Информация о Вас не доступна!");
   })
 }
 updateUserData();
@@ -212,12 +211,11 @@ modalEditDate.addEventListener("submit", function (event) {
   changeData(event);
 });
 
-//***delete accuant****************************** */
+//***delete accuant**************************************************************/
 const buttonDelAccuant = document.querySelector(".change__del_js");
 
 function deleteAccuant(event){
   event.preventDefault();
-  loaderBox.innerHTML = createLoader();
 
   sendReq({
     method: "DELETE", 
@@ -242,7 +240,6 @@ function deleteAccuant(event){
     }
   })
   .catch (function (errors) {
-    loaderBox.innerHTML = "";
     setFormErrors(event.target, errors);
   });
 }

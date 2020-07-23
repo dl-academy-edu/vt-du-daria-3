@@ -31,7 +31,6 @@
     margin-top: 117px;
   }
 
-
   &__form {
     display: flex;
     margin-top: 33px;
@@ -39,9 +38,6 @@
     flex-wrap: wrap;
   }
 
-  // &__field {
-  //   margin-left: 15px;
-  // }
   &::after {
     content: "";
     display: inline-block;
@@ -52,19 +48,7 @@
   }
 }
 
-.tag {
-	// @extend %padding-margin;
-	// margin-left: 6%;
-  
-	// @media (max-width: 480px) {
-	//   margin-left: 0;
-	//   margin-top: -5px;
-	// }
-  
-	// &__title {
-	//   // @extend %font-title;
-  // }
-  
+.tag { 
   @media (max-width: 768px) {
 	  order: 4;
 	}
@@ -95,7 +79,7 @@
 	  margin-right: 5px;
 	  cursor: pointer;
     position: relative;
-  
+
 	  > input { 
       &:checked + .tag__click >.tag__click_active {
         display: initial;
@@ -119,10 +103,6 @@
   height: 25px;
   border: 2.5px solid #E5E5E5;
   border-radius: 3px;
-
-  &:hover {
-    border: 2.5px solid  #070707;
-  }
 }
 
 .text {
@@ -136,40 +116,9 @@
   height: 24px;
   border: 2.5px solid  #E5E5E5;
   border-radius: 100%;
-
-  &:hover {
-    border: 2.5px solid  #070707;
-  }
-
-  &:active::before, &:hover::before, &:checked::before  {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 12px;
-    height: 12px;
-    background-color:  #070707;
-    border-radius: 100%;
-    border: 2.5px solid #070707;
-    
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 12px;
-    height: 12px;
-    background-color: #E5E5E5;
-    border-radius: 100%;
-  }
 }
 
 .view {
-  // @extend %padding-margin;
   margin-left: 7%;
 
   @media (max-width: 768px) {
@@ -193,26 +142,43 @@
   &__label {
     display: flex;
     align-items: center;
-    // margin-right: 33px;
     cursor: pointer;
     position: relative;
 
-    > input:checked +.clicker {
-      border: 2.5px solid  #070707;
-    }
+    > input {
+      &:focus + .clicker {
+        border: 2.5px solid #070707;
+      }
 
-    > input:checked +.clicker::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      width: 12px;
-      height: 12px;
-      background-color: #070707;
-      border: 2.5px solid  #070707;
-      border-radius: 100%;
-    }
+      &:hover + .clicker {
+        border: 2.5px solid  #070707;
+      }
+
+      &:checked +.clicker {
+        border: 2.5px solid  #070707;
+      }
+  
+      &:checked +.clicker::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 12px;
+        height: 12px;
+        background-color: #070707;
+        border: 2.5px solid  #070707;
+        border-radius: 100%;
+      }
+
+      &:disabled +.clicker {
+        background-color: #c1c1c1;
+        border: 2.5 solid #c1c1c1;
+        color: #e1e1e1;
+        cursor: initial;
+      }
+    
+    } 
   }
 }
 
@@ -224,7 +190,6 @@
     margin-left: 0;
 	}
   
-
   &__etem {
     padding-bottom: 9px;
   }
@@ -239,11 +204,30 @@
     display: flex;
     align-items: center;
 
-    > input:checked + .click {
-      content: url("/../../static/images/accept.svg");
-      background-color: #FFFFFF;
-      top: 1px;
-      border: 2.5px solid #070707;
+    > input {
+      &:focus + .click {
+        border: 2.5px solid #070707;
+      }
+
+      &:hover + .click {
+        border: 2.5px solid  #070707;
+      }
+
+      &:checked + .click {
+        content: url("/../../static/images/accept.svg");
+        background-color: #FFFFFF;
+        top: 1px;
+        border: 2.5px solid #070707;
+      }
+
+      &:disabled + .click {
+        background-color: #c1c1c1;
+        border: 2.5px solid #828282
+      }
+  
+      &:disabled ~ span {
+        cursor: inherit;
+      }
     }
   }
 }
@@ -254,12 +238,15 @@
   }
 }
 
-
 .show {
   margin-left: 8.2%;
 
   @media (max-width: 768px) {
 	  order: 3;
+  }
+
+  @media (max-width: 664px) {
+	  margin-left: 0;
 	}
 
   &__etem {
@@ -276,21 +263,41 @@
     display: flex;
     align-items: center;
 
-    > input:checked +.clicker {
-      border: 2.5px solid  #070707;
-    }
+    > input {
+      &:focus + .clicker {
+        border: 2.5px solid  #070707;
+      }
 
-    > input:checked +.clicker::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      width: 12px;
-      height: 12px;
-      background-color: #070707;
-      border: 2.5px solid  #070707;
-      border-radius: 100%;
+      &:hover + .clicker {
+        border: 2.5px solid  #070707;
+      }
+
+      &:checked +.clicker {
+        border: 2.5px solid  #070707;
+      }
+  
+      &:checked +.clicker::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 12px;
+        height: 12px;
+        background-color: #070707;
+        border: 2.5px solid  #070707;
+        border-radius: 100%;
+      }
+
+      &:disabled +.clicker {
+        background-color: #c1c1c1;
+        border: 2.5 solid #c1c1c1;
+        cursor: initial;
+      }
+  
+      &:disabled ~ span {
+        cursor: inherit;
+      }
     }
   }
 }
@@ -319,20 +326,30 @@
   &__label {
     display: flex;
 
-    > input:checked +.clicker {
-      border: 2.5px solid  #070707;
-    }
+    > input {
+      &:focus + .clicker {
+        border: 2.5px solid  #070707;
+      }
 
-    > input:checked +.clicker::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      width: 12px;
-      height: 12px;
-      background-color: #070707;
-      border-radius: 100%;
+      &:hover + .clicker {
+        border: 2.5px solid  #070707;
+      }
+
+      &:checked +.clicker {
+        border: 2.5px solid  #070707;
+      }
+  
+      &:checked +.clicker::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 12px;
+        height: 12px;
+        background-color: #070707;
+        border-radius: 100%;
+      }
     }
   }
 }
@@ -341,6 +358,7 @@
   display: flex;
   margin-bottom: 7px;
   width: 100%;
+  
 
   @media (max-width: 768px) {
     order: 6;
@@ -367,9 +385,16 @@
   color: #000000;
   border: 2.5px solid #070707;
   
-    &:hover, &:active {
+    &:hover, &:active, &:checked {
       background-color: #000000;
       color: #FFFFFF;
+    }
+
+    &:disabled{
+      background-color: #c1c1c1;
+      border: solid #c1c1c1;
+      color: #e1e1e1;
+      cursor: initial;
     }
 
   @media (max-width: 768px) {
@@ -381,20 +406,20 @@
 
 .button-search {
   margin-top: 0;
-  min-width: 100px;
   margin-bottom: 10px;
   margin-left: 0;
   @extend .button-submit;
 
   @media (max-width: 768px) {
     order: 7;
-    margin-left: 70%;
     margin-top: 20px;
+    align-self: flex-end;
 	}
 }
 
 //*********************************************
 .card {
+  padding-left: 0;
 
   &__tag {
     display: flex;
@@ -419,15 +444,6 @@
       border-bottom: 0;
     }
 
-    // &::after {
-    //   content: "";
-    //   display: inline-block;
-    //   width: 100%;
-    //   height: 1px;
-    //   background-color: #666666;
-    //   border: none;
-    // }
-
     @media (max-width: 768px) {
       flex-wrap: wrap;
     }
@@ -436,7 +452,7 @@
       margin-left: 10px;
       display: flex;
 
-      @media (max-width: 768px) {
+      @media (max-width: 580px) {
         flex-wrap: wrap;
       }
     }
@@ -445,95 +461,22 @@
   &__link {
     font-weight: bold;
     border-bottom: 1px dashed;
+    
+    &:focus, &:hover, &:active {
+      border-bottom: 1px solid;
+    }
   }
 
   &__info {
     margin-left: 20px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 580px) {
       margin-top: 20px;
       margin-left: 0;
     }
   }
-
-  &__img {
-    max-width: initial;
-    height: auto;
-  }
 }
 
-/********************************************************/
-// .view {
-//   // @extend %padding-margin;
-//   margin-left: 9%;
-
-//   @media (max-width: 768px) {
-//     margin-left: 9%;
-//   }
-
-//   @media (max-width: 480px) {
-//     margin-left: 22%;
-//     margin-top: -5px;
-//   }
-
-//   &__title {
-//     @extend %font-title;
-//   }
-
-//   &__list {
-//     @extend .color__list;
-//   }
-
-//   &__etem {
-//     @extend .color__etem;
-//   }
-
-//   &__label {
-//     @extend .color__label;
-
-//     > input:focus + .clicker {
-//       border: 3px solid rgb(141, 113, 90)
-//     }
-  
-//     > input:checked + .clicker::before {
-//       @extend .clicker_active;
-//     } 
-//   }
-// }
-
-// .clicker {
-//   display: flex;
-//   position: relative;
-//   width: 20px;
-//   height: 20px;
-//   border: 3px solid #c29974;
-//   border-radius: 100%;
-  
-//   &_active::before {
-//     content:"";
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//     width: 12px;
-//     height: 12px;
-//     background-color:  #C29974;
-//     border-radius: 100%;
-//   }
-// }
-
-//       <picture class="picture">
-//         <source 
-//           media="(max-width: 767px)"
-//           srcset="${SERVER_URL}${card.mobilePhotoUrl}, ${SERVER_URL}${card.mobile2xPhotoUrl} 2x">
-//         <source
-//           media="(max-width: 1265px)" 
-//           srcset="${SERVER_URL}${card.tabletPhotoUrl}, ${SERVER_URL}${card.tablet2xPhotoUrl}  2x">
-//         <img
-//           srcset="${SERVER_URL}${card.desktopPhotoUrl} 1x, ${SERVER_URL}${desktop2xPhotoUrl} 2x"
-//           src = "${SERVER_URL}${card.desktopPhotoUrl}" 
-//           class="blog__img" 
-//           alt="image of dog">
-//       </picture>
-
-
+img {
+  max-width: inherit;
+}

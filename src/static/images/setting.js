@@ -4,7 +4,6 @@ let basePath = "https://academy.directlinedev.com";
 //***fech*************************************************/
 function sendReq({url, method="GET", body={}, headers={}}){
   let settings = {
-    
     method,
     body,
     headers,
@@ -38,6 +37,7 @@ function createLoader() {
 /*header**Sign in modal***************************************************************************/
 let modalSignIn = document.querySelector(".modalSign-bg_js");
 let buttonOpenSignIn = document.querySelector(".sign_js");
+let mobileButtonOpenSignIn = document.querySelector(".mobile-sign_js");
 let buttonCloseSignIn = document.querySelector(".modalSign-window__close_js");
 let input1 = document.querySelector(".modalSign-window__input_js");
 
@@ -52,6 +52,7 @@ function modalRem(){
 }
 
 buttonOpenSignIn.addEventListener("click", modalAdd);
+mobileButtonOpenSignIn.addEventListener("click", modalAdd);
 buttonCloseSignIn.addEventListener("click", modalRem);
   
 
@@ -74,8 +75,8 @@ function SignInReg(event) {
   event.preventDefault();
   loaderBox.innerHTML = createLoader();
   let values =  getAllValuesFromForm(event.target);
-  console.log("Sign in modal", values); //мы получили нашу форму теперь надо ее  оправлять
- // воспользуемся sendReqwest
+  console.log("Sign in modal", values); 
+
   sendReq({
     url: "/api/users/login", 
     method: "POST", 
@@ -85,9 +86,9 @@ function SignInReg(event) {
     },
   })
   .then(function(response) {
-    return response.json();//обязательно
+    return response.json();
   })
-  .then(function (json){ //в случае успеха
+  .then(function (json){ 
     if (json.success) {
       let data = json.data;
       loaderBox.innerHTML = "";
@@ -116,6 +117,7 @@ modalSignIn.addEventListener("submit", function (event) {
 /*header**Register modal**************************************************************************/
 let modalReg = document.querySelector(".modalReg-bg_js");
 let buttonOpenReg = document.querySelector(".register_js");
+let mobileButtonOpenReg = document.querySelector(".mobile-register_js");
 let buttonCloseReg = document.querySelector(".modalReg-window__close_js");
 let input2 = document.querySelector(".modalReg-window__input_js");
   
@@ -130,6 +132,8 @@ function modalRegRem(){
 
 buttonOpenReg.addEventListener("click", modalRegAdd);
 buttonCloseReg.addEventListener("click", modalRegRem);
+mobileButtonOpenReg.addEventListener("click", modalRegAdd);
+
 
 window.addEventListener("keydown", function (event) {
   if(!modalReg.classList.contains("modalReg-bg_close") && event.code==="Escape"){
@@ -138,14 +142,13 @@ window.addEventListener("keydown", function (event) {
   }
 });
 
-
 //**send form Register modal**/
 function modalRegReg(event) {
   event.preventDefault();
   loaderBox.innerHTML = createLoader();
   let values =  getAllValuesFromForm(event.target);
-  console.log("Sign in modal", values); //мы получили нашу форму теперь надо ее  оправлять
- // воспользуемся sendReqwest - сенд реквестом
+  console.log("Sign in modal", values);
+
   sendReq({
     url: "/api/users", 
     method: "POST", 
@@ -156,7 +159,7 @@ function modalRegReg(event) {
   })
   .then(function(response) {
     console.log(response);
-    return response.json();//обязательно
+    return response.json();
   })
   .then(function(json){
     if(json.success){
@@ -171,7 +174,7 @@ function modalRegReg(event) {
   })
   .catch (function (errors) {
     loaderBox.innerHTML = "";
-    setFormErrors(event.target, errors)
+    setFormErrors(event.target, errors);
   });
 }
 
@@ -319,4 +322,3 @@ function updateToken (token){
   }
   checkToken();
 }
-

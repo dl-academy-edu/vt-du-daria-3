@@ -2,29 +2,10 @@
 
 .button {
   display: block; 
-  // padding: 10px 0;
-  // font-family: $primary-font;
-  // font-size: $fs-primary;
   font-weight: bold;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
-  // color: #FFFFFF;
   cursor: pointer;
   border-radius: 30px;
-
-  // @media (max-width: 450px) {
-  //   font-size: 14px;
-  //   line-height: 19px;
-  // }
-
-  // transition: background-color $transition-duration;
-
-  // &:hover {
-  //   background-color: #C29974;
-  // }
-  
-  // &:active {
-  //   background-color: #CFAF91;
-  // }
 }

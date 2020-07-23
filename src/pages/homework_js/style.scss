@@ -2,9 +2,19 @@
   min-height: 1200px;
 }
 
+.menu {
+  @media (max-width: 375px) {
+    margin: -103px auto 76px 80%;
+  }
+}
+
 .form {
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 375px) {
+    margin-top: 30px;
+  }
 }
 
 .btn {
