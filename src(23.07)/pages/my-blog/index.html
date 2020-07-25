@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="desciption" content="page my blog about animals our small brouthers">
+    <meta name="keywords" content="blog, animals">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/static/fonts/gilroy.css" />
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="/../common.css">
+    <link rel="stylesheet" href="style.css">
+    <title>My Blog</title>
+  </head>
+
+  <body>
+    @@include('header/index.html')
+    <main class="container-back">
+        <h1 class="main-title container">My blog</h1>
+
+        <div class="menu container menu__mobile_js">
+          <button class="menu__button-mobile"></button>
+          <button class="menu__button-mobile"></button>
+          <button class="menu__button-mobile"></button>
+        </div>    
+        
+        <ul class="selection container">
+          <form class="selection__form" name="filterForm">
+            <fieldset class="selection__field tag">
+              <span class="tag__title">Tags</span>
+              <ul class="tag__list tag__list_js">
+
+                <div class="form-group form-check">
+                  <input name="option" type="checkbox" class="form-check-input" id="exampleCheck1" value="1">
+                  <label class="form-check-lable" for="exampleCheck1">Вариант 1</label>
+                </div>
+                <div class="form-group form-check">
+                  <input name="option" type="checkbox" class="form-check-input" id="exampleCheck2" value="2">
+                  <label class="form-check-lable" for="exampleCheck2">Вариант 2</label>
+                </div>
+                <div class="form-group form-check">
+                  <input name="option" type="checkbox" class="form-check-input" id="exampleCheck3" value="3">
+                  <label class="form-check-lable" for="exampleCheck3">Вариант 3</label>
+                </div>
+
+              </ul>
+            </fieldset> 
+
+            <fieldset class="selection__field view">
+              <span class="view__title">Views</span>
+              <ul class="view__list">
+                <li class="view__etem">
+                  <label class="view__label">
+                    <input class="input hidden" type="radio" name="view" value="more-100">
+                    <span class="clicker"></span>
+                    <span class="text">more 100</span>
+                  </label>
+                </li>
+                <li class="view__etem">
+                  <label class="view__label">
+                    <input class="input hidden" type="radio" name="view" value="more-500" checked>
+                    <span class="clicker clicker_active"></span>
+                    <span class="text">more 500</span>
+                  </label>
+                </li>
+                <li class="view__etem">
+                  <label class="view__label">
+                    <input class="input hidden" type="radio" name="view" value="more-1000">
+                    <span class="clicker"></span>
+                    <span class="text">more 1000</span>
+                  </label>
+                </li>
+              </ul>
+            </fieldset>
+
+            <fieldset class="selection__field comments"> 
+              <span class="comments__title">Comments</span>
+              <ul class="comments__list">
+                <li class="comments__etem">
+                  <label class="comments__label">
+                    <input class="input hidden" type="checkbox" name="comment" value="not-a-single">
+                    <span class="click"></span>
+                    <span class="text">not a single</span> 
+                  </label>
+                </li>
+                <li class="comments__etem">
+                  <label class="comments__label">
+                    <input class="input hidden" type="checkbox" name="comment" value="more-1">
+                    <span class="click"></span>
+                    <span class="text">more 1</span> 
+                  </label>
+                </li>
+                <li class="comments__etem">
+                  <label class="comments__label">
+                    <input class="input hidden" type="checkbox" name="comment" value="more-50">
+                    <span class="click"></span>
+                    <span class="text">more 50</span>
+                  </label>
+                </li>
+              </ul>
+            </fieldset> 
+
+            <fieldset class="selection__field show">
+              <span class="show__title">How show?</span>
+              <ul class="show__list">
+                <li class="show__etem">
+                  <label class="show__label">
+                    <input class="input hidden" type="radio" name="show" value="show-5" checked>
+                    <span class="clicker"></span>
+                    <span class="text">show 5</span>
+                  </label>
+                </li>
+                <li class="show__etem">
+                  <label class="show__label">
+                    <input class="input hidden" type="radio" name="show" value="show-10">
+                    <span class="clicker"></span>
+                    <span class="text">show 10</span>
+                  </label>
+                </li>
+              </ul>
+            </fieldset>
+
+            <fieldset class="selection__field sort">
+              <span class="sort__title">Sort by</span>
+              <ul class="sort__list">
+                <li class="sort__etem">
+                  <label class="sort__label">
+                    <input class="input hidden" type="radio" name="sort" value="date" checked>
+                    <span class="clicker"></span>
+                    <span class="text">date</span>
+                  </label>
+                </li>
+                <li class="sort__etem">
+                  <label class="sort__label">
+                    <input class="input hidden" type="radio" name="sort" value="title">
+                    <span class="clicker"></span>
+                    <span class="text">title</span>
+                  </label>
+                </li>
+                <li class="sort__etem">
+                  <label class="sort__label">
+                    <input class="input hidden" type="radio" name="sort" value="views">
+                    <span class="clicker"></span>
+                    <span class="text">views</span>
+                  </label>
+                </li>
+              </ul>
+            </fieldset>
+
+            @@include('button/index.html',{
+              "text": "Apply",
+              "class": "button-submit",
+              "type": "submit",
+              "value": "apply"
+            })
+
+            <label class="search">
+              <input class="search__input" type="text" placeholder="Поиск.." name="search">
+              @@include('button/index.html',{
+                "text": "Search",
+                "class": "button-search",
+                "type": "submit",
+                "value": "search"
+              })
+            </label>
+          </form>
+        </div>
+
+        <section class="card container">
+          <h2 class="hidden">Blog</h2>
+          <ul class="card__list card__list_js"></ul>
+        </section>
+
+      @@include('link-pages/index.html')
+    </main>
+    @@include('footer/index.html')
+    @@include('loader/index.html')
+    
+    <script src="/../../static/images/setting.js"></script>
+    <script src="/../../static/images/form.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>

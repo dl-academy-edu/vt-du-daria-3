@@ -72,12 +72,19 @@
                 "value": "date"
               })
               @@include('button/index.html',{
+                "text": "Exit profile",
+                "class": "change__exit change__exit_js",
+                "type": "submit",
+                "value": "exit"
+              })     
+              @@include('button/index.html',{
                 "text": "Delete account",
                 "class": "change__del change__del_js",
                 "type": "submit",
                 "value": "delete"
-              })   
+              })
             </div>
+          </div>
         </div>
       </div>
       @@include('loader/index.html')
@@ -96,8 +103,8 @@
           @@include('button/index.html',{
             "text": "Change password",
             "class": "modalEditpsw-window__button",
-            "type": "send",
-            "value": "send"
+            "type": "submit",
+            "value": "submit"
           })
           <button class="modalEditpsw-window__close modalEditpsw-window__close_js" type="button" value="closed"></button>
         </form>
@@ -146,12 +153,26 @@
           @@include('button/index.html',{
             "text": "Submit changes",
             "class": "modalEditDate-window__button",
-            "type": "send",
-            "value": "send"
+            "type": "submit",
+            "value": "submit"
           })
           <button class="modalEditDate-window__close modalEditDate-window__close_js" type="button" value="closed"></button>
         </form>
-      </div> 
+      </div>
+      <!-- /***form sent succeseful************************************************************************************************/ -->
+      <!-- <div class="msgSuccess-bg msgSuccess-bg_js">
+        <div class ="msgSuccess-bg__success" >
+          <span class="msgSuccess-bg__text">Form has been sent successfully</span>
+          <button class="msgSuccess__close msgSuccess__close_js" type="button" value="closed"></button>
+        </div>
+      </div> -->
+      <!-- /***form sent error server************************************************************************************************/ -->
+      <!-- <div class="msgError-bg msgError-bg_js">
+        <div class ="msgError__error">
+          <span class="msgError__text">The form was sent but the server transmits an error: “The form was sent but the server transmits an error</span>
+          <button class="msgError__close msgError__close_js" type="button" value="closed"></button>
+        </div>
+      </div>  -->
     </main>
     <div class="hidden">
       @@include('footer/index.html')

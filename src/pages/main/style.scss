@@ -7,6 +7,12 @@
 .main-title {
   width: 100%;
   max-width: 319px;
+  @media (max-width: 768px) {
+    margin-left: 40px;
+  }
+  @media (max-width: 375px) {
+    margin-left: 0;
+  }
 }
 
 .content {
@@ -85,7 +91,7 @@
   width: 100%;
 
   @media (max-width: 768px) {
-    padding-top: 0;
+    padding-top: 35px;
   }
 
   &__dot {
@@ -115,7 +121,7 @@
 .about-me {
   overflow: hidden;
   padding-top: 31px;
-  padding-bottom: 88px;
+  //padding-bottom: 88px;
   background-color: #F6F6F6;
 
   &__content {
@@ -193,6 +199,10 @@
       margin-top: 45px;
       height: 2.5px;
       background: #070707;
+
+      @media (max-width: 450px) {
+        margin-top: 41.5px;
+      }
     }
 
     &::before {
@@ -261,14 +271,17 @@
     justify-content: space-between;
     margin: 0 auto 10px;
     padding-left: 0;
-    width: 100%;
   }
 
   &__item {
     display: flex;
-    width: 153px;
+    min-width: 153px;
     flex-direction: column;
     text-align: center;
+    
+    @media (max-width: 450px) {
+      min-width: 119px;
+    }
   }
 
   &__load {
@@ -331,9 +344,6 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
-  }
-  &__picture {
-    width: 100%;
   }
 }
 

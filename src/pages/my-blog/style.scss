@@ -34,8 +34,11 @@
   &__form {
     display: flex;
     margin-top: 33px;
-    margin-bottom: 11px;
     flex-wrap: wrap;
+
+    @media (max-width: 375px) {
+      margin-bottom: -10px;
+    }
   }
 
   &::after {
@@ -247,6 +250,11 @@
 
   @media (max-width: 664px) {
 	  margin-left: 0;
+  }
+
+  @media (max-width: 320px) {
+    margin-top: 10px;
+    margin-left: 20px;
 	}
 
   &__etem {
@@ -311,6 +319,10 @@
   
   @media (max-width: 493px) {
     margin-left: 0;
+  }
+  
+  @media (max-width: 320px) {
+    margin-top: 10px;
 	}
 
   &__etem {
@@ -356,14 +368,24 @@
 
 .search {
   display: flex;
+  margin-top: 10px;
   margin-bottom: 7px;
   width: 100%;
   
 
   @media (max-width: 768px) {
     order: 6;
+  }
+
+  @media (max-width: 320px) {
+    margin-top: 25px;
     flex-direction: column;
 	}
+  
+  &__lable {
+    width: 100%;
+    margin-right: 20px;
+  }
   
   &__input {
     padding: 10px;
@@ -378,7 +400,7 @@
   padding-top: 7px;
   padding-bottom: 7px;
   min-width: 87px;
-  margin-top: 50px;
+  margin-top: 40px;
   height: 40px;
   margin-bottom: 6.5%;
   background-color: #FFFFFF;
@@ -401,16 +423,21 @@
     margin-left: 50px;
     order: 5;
     margin-top: 34px;
-	}
+  }
+  
+  @media (max-width: 768px) {
+    margin-left: 20px;
+  }
 }
 
 .button-search {
+  @extend .button-submit;
+  min-width: 98px;
   margin-top: 0;
   margin-bottom: 10px;
   margin-left: 0;
-  @extend .button-submit;
 
-  @media (max-width: 768px) {
+  @media (max-width: 320px) {
     order: 7;
     margin-top: 20px;
     align-self: flex-end;
@@ -421,9 +448,14 @@
 .card {
   padding-left: 0;
 
+  &__title{
+    font-size: 24px;
+    line-height: 29px;
+  }
+  
   &__tag {
     display: flex;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 
   &__list {
@@ -435,31 +467,44 @@
     border-top: 0;
     border-left: 0;
     border-right: 0;
-    border-bottom: 1px solid black;
-    display: flex;
     margin-bottom: 20px;
     padding-bottom: 16px;
 
-    &:nth-child(5) {
-      border-bottom: 0;
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 100%;
+      height: 2px;
+      margin-left: 20px;
+      background: #E5E5E5;
+      border: none;
     }
+    
+    
 
     @media (max-width: 768px) {
       flex-wrap: wrap;
     }
 
     &-item {
-      margin-left: 10px;
+      margin-left: 20px;
       display: flex;
 
       @media (max-width: 580px) {
         flex-wrap: wrap;
       }
     }
+
+    &__text {
+      font-size: 18px;
+      line-height: 21px;
+    }
   }
 
   &__link {
     font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
     border-bottom: 1px dashed;
     
     &:focus, &:hover, &:active {
@@ -473,6 +518,7 @@
     @media (max-width: 580px) {
       margin-top: 20px;
       margin-left: 0;
+      margin-bottom: 20px;
     }
   }
 }

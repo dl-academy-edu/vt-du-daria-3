@@ -97,16 +97,17 @@ function SignInReg(event) {
       console.log("data.userId", data);
       closeModal();
       updateToken(data.token); //запускаем функцию и принимать на входе token
-      //window.location.reload();
     } else {
       throw json.errors
     }
   })
   .catch (function (errors) {
     loaderBox.innerHTML = "";
-    alert (`К сожалению Вы не зарегестрированы! Пожалуйста зарегистрируйтесь!`);
-    closeModal();
-    window.location.reload();
+    if(errors === true){
+      alert (`К сожалению Вы не зарегестрированы! Пожалуйста зарегистрируйтесь!`);
+    } else {
+      window.location.reload();
+    }
   });
 }
 
@@ -174,7 +175,12 @@ function modalRegReg(event) {
   })
   .catch (function (errors) {
     loaderBox.innerHTML = "";
-    setFormErrors(event.target, errors);
+    if(errors===true){
+      setFormErrors(event.target, errors);
+      alert (`Извините такой пользователь уже зарегистрирован! Пожалуйста зарегистрируйтесь!`);
+    } else{
+      alert (`Извините такой пользователь уже зарегистрирован! Пожалуйста зарегистрируйтесь!`);
+    }
   });
 }
 
@@ -183,10 +189,10 @@ modalReg.addEventListener("submit", function (event) {
 });
 
 /*footer**Send message modal***********************************************************************/
-var modal = document.querySelector(".modal-bg_js");
-var buttonOpen = document.querySelector(".footer__link_js");
-var buttonClose = document.querySelector(".modal-window__close_js");
-var input = document.querySelector(".modal-window__input_js");
+let modal = document.querySelector(".modal-bg_js");
+let buttonOpen = document.querySelector(".footer__link_js");
+let buttonClose = document.querySelector(".modal-window__close_js");
+let input = document.querySelector(".modal-window__input_js");
 
 buttonOpen.addEventListener("click", function(){
   modal.classList.remove("modal-bg_close");
@@ -245,9 +251,31 @@ modal.addEventListener("submit", function (event) {
   SendMessage(event);
 });
 
-var buttonMobileHeader = document.querySelector(".menu__mobile_js");
-var buttonCloseMobileHeader = document.querySelector(".mobile-header__close_js");
-var mobileHeader = document.querySelector(".mobile-header");
+/**profile**message**succes************************************************************/
+// let buttonSuccessClose = document.querySelector(".msgSuccess__close_js");
+// let msgSuccess = document.querySelector(".msgSuccess-bg_js");
+
+// function SuccessAdd(){
+//   msgSuccess.classList.remove("msgSuccess-bg_close");
+//   input2.focus();
+// }
+
+// function SuccessRem(){
+//   msgSuccess.classList.add("msgSuccess-bg_close");
+// }
+
+// buttonSuccessClose.addEventListener("click", SuccessRem);
+
+// window.addEventListener("keydown", function (event) {
+//   if(!msgSuccess.classList.contains("msgSuccess-bg_close") && event.code==="Escape"){
+//     msgSuccess.classList.add("msgSuccess-bg_close");
+//   }
+// });
+
+/**mobile**header******************************************************************/
+let buttonMobileHeader = document.querySelector(".menu__mobile_js");
+let buttonCloseMobileHeader = document.querySelector(".mobile-header__close_js");
+let mobileHeader = document.querySelector(".mobile-header");
 
 //open
 buttonMobileHeader.addEventListener("click",function(){
@@ -259,7 +287,7 @@ buttonCloseMobileHeader.addEventListener("click", function(){
   mobileHeader.classList.remove("mobile-header_open");
 });
 
-//******************************************************************************* */
+//********************************************************************************/
 //Общая на все формы
 function getAllValuesFromForm(form, type) {
   if (type === "formData"){
@@ -311,7 +339,6 @@ function getAllValuesFromForm(form, type) {
     document.querySelector(".profile_js").classList.add("hidden");
   }
 })();
-
 
 function updateToken (token){ 
   if (token) {

@@ -1,5 +1,8 @@
 @import "../../components/consts";
 
+.container {
+  padding: 0 85px;
+}
 
 .main-title {
   @media (max-width: 375px) {
@@ -24,6 +27,10 @@
   margin-top: 19px;
   display:flex;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 
   &__image {
     //margin-left: -20px;
@@ -61,7 +68,7 @@
 }
 
 .change {
-  &__psw, &__data, &__del {
+  &__psw, &__data, &__del, &__exit {
     margin-top: 16px;
     padding: 5px 10px;
     background-color: #FFFFFF;

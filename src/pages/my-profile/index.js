@@ -211,6 +211,21 @@ modalEditDate.addEventListener("submit", function (event) {
   changeData(event);
 });
 
+//***exit profile**************************************************************/
+const buttonExitProfile = document.querySelector(".change__exit_js");
+
+function exitProfile(event){
+  event.preventDefault();
+  localStorage.removeItem("token");
+  localStorage.removeItem("userId");
+  window.location.reload();
+}
+
+buttonExitProfile.addEventListener("click", function (event) {
+  confirm("Вы действительно хотите выйти из профиля?");
+  exitProfile(event);
+});
+
 //***delete accuant**************************************************************/
 const buttonDelAccuant = document.querySelector(".change__del_js");
 

@@ -1,0 +1,42 @@
+@import './consts';
+
+.pages {
+  display: flex;
+  padding-bottom: 43px; 
+  align-items: center;
+
+  @media (max-width: 375px) {
+    padding-bottom: 50px;
+  }
+  
+  &__list {
+    display: flex;
+    width: 148px;
+    margin: auto;
+    padding-left: 0;
+    justify-content: space-between;
+    font-style: normal;
+    font-weight: bold;
+    font-size: $fs-primary;
+    line-height: 20px;
+    color: #1E0606;
+
+    @media (max-width: 375px) {
+      font-size: 14px;
+      line-height: 17px;
+      width: 188px;
+    }
+  }
+
+  &__link {
+    color: #E5E5E5;
+    transition: $transition-duration;
+
+    &:hover, &:focus, &:active, &:checked {
+      color: #1E0606;
+    }
+    &_active {
+      color: #1E0606;
+    }
+  }
+}

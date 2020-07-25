@@ -1,0 +1,11 @@
+@import './consts';
+
+.button {
+  display: block; 
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 30px;
+}

@@ -95,8 +95,8 @@ const SERVER_URL = "https://academy.directlinedev.com";
           <span>${dateServer}</span>
           <span>${card.views} views</span>
           <span>${card.commentsCount} comments</span>
-          <h3 class="card__link-title">${card.title}</h3> 
-          <p class = "card__text">${card.text}</p>
+          <h3 class="card__title">${card.title}</h3> 
+          <p class="card__text">${card.text}</p>
           <a class="card__link" href="#">Go to this post</a>
         </div>
       </div>

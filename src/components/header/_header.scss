@@ -243,6 +243,7 @@
 
 .menu {
   display: none;
+
   @media (max-width: 375px) {
     display: flex;
     flex-direction: column;
@@ -250,6 +251,10 @@
     cursor: pointer;
     margin: -57px auto 0 80%;
     order: 2;
+
+    &:focus {
+      border: 1px solid;
+    }
   }
 
   &__button-mobile {
